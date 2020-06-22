@@ -1,0 +1,38 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>368</LabelID>
+    <LabelName>获取店家信息</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam />
+    <LabelTable>ZL_User LEFT JOIN ZL_UserBase ON ZL_User.UserID=ZL_UserBase.UserID</LabelTable>
+    <LabelField>GroupID,RegTime,UserName,FaceWidth,UserFace,ZL_User.UserID</LabelField>
+    <LabelWhere> ZL_User.UserID={ZL:GetuserID()/}</LabelWhere>
+    <LabelOrder />
+    <LabelContent>&lt;div class="col-4 Parents_top_l"&gt;&lt;a href="javascript:;"&gt;&lt;img src="{ZL:GetPicUrl({Field="UserFace"/})/}" alt="{Field="UserName"/}" /&gt;&lt;/a&gt;
+  &lt;a href="javasrcipt:;"&gt;{ZL.Label id="获取会员组名称" UserID="{Field="UserID"/}" /}&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="col-8 Parents_top_r"&gt;
+&lt;ul&gt;&lt;li&gt;&lt;i class="zi zi_useralt"&gt;&lt;/i&gt; 用户名：{Field="UserName"/}&lt;/li&gt;
+  &lt;li&gt;&lt;i class="zi zi_useralt"&gt;&lt;/i&gt; 店铺名称：{ZL.Label id="获取店铺名称" UserID="{Field="UserID"/}" /}&lt;/li&gt;
+&lt;li&gt;&lt;i class="zi zi_bells"&gt;&lt;/i&gt; 加入时间：{ZL:FormatDate({Field="RegTime"/},yyyy-MM-dd)/}&lt;/li&gt;&lt;/ul&gt;
+&lt;/div&gt;</LabelContent>
+    <LabelCount>1</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_User","tb_s":"ZL_UserBase"}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

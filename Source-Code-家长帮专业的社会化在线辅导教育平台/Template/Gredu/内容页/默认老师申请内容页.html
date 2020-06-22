@@ -1,0 +1,255 @@
+﻿{ZL.Source id="老师申请数据源标签" /}<!DOCTYPEHTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+{ZL:Boot4()/}
+<meta name="Keywords" content="{SField sid="老师申请数据源标签" FD="Tagkey" page="0" /}">
+<link href="{$CssDir/}global.css?V={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<link rel="stylesheet" href="/dist/css/swiper.min.css">
+<script src="/dist/js/swiper.min.js"></script>
+<script src="/JS/ICMS/ZL_Common.js"></script>
+<script src="/JS/ZL_Regex.js"></script>
+<script src="/JS/Modal/APIResult.js"></script>
+<!--<script src="/JS/Mobile/vconsole.min.js"></script>-->
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="/Extend/assets/extend.js?v={ZL.Label id="前端样式版本号"/}"></script>
+<style type="text/css">
+.mb_img{max-width:100px;text-align:center;}
+.mteacher_name_tab div{font-weight:normal;}
+.mteacher_name_tab div i{display:inline-block;min-width:20px;}
+.mteacher_name_tab small {border-right:2px solid #ddd;font-weight:bolder;}
+</style>
+</head>
+<body>
+<script>
+    //修改标题title,如果链接带了推广使用链接
+    //否则使用cookie中信息
+    $("title").text('{SField sid="老师申请数据源标签" FD="Title" page="0"/}');
+    var tg={};
+    var puid=Convert.ToInt(getPuid());
+    if(puid>0)
+    {
+        store.get(puid,function(model){
+            if(model==null){ }
+            else{ 
+                var result=model.result;
+                if(result.HoneyName){ $("title").text(result.HoneyName+"的店铺"); }
+                else{ $("title").text(result.UserName+"的店铺"); }
+            }
+        });
+    }
+    $(function(){
+        var imgs=getImgs('{SField sid="老师申请数据源标签" FD="qtzp" page="0"/}'==''?'[]':'{SField sid="老师申请数据源标签" FD="qtzp" page="0"/}');
+        var swiperHtml="";
+        for (var i = 0; i < imgs.length; i++) {
+            swiperHtml+="<div class='swiper-slide'><img src="+imgs[i].url+" /></div>"
+        }
+        $("#swiper_list").append(swiperHtml);
+        var swiper = new Swiper('.swiper-container', {
+            pagination: {el: '.swiper-pagination'},
+            autoplay:true,
+        });
+        $("#djid").val(puid);
+        $(".mteacher_teaching_con").each(function(){
+            var html=$(this).html().replace(/\n/ig,"<br/>");
+            $(this).html(html);
+        });
+        var jl='{SField sid="老师申请数据源标签" FD="jl" page="0"/}';
+        var jzxx='{SField sid="老师申请数据源标签" FD="jzxx" page="0"/}';
+        if(jl.length>0){
+            $("#info_jl").text(jl+"教龄");
+        }
+        if(jzxx.length>1){
+            $("#info_jzxx").text(jzxx+"名师");
+        }
+    })
+</script>
+<header class="mhome_top">
+  <div class="swiper-container">
+    <div class="swiper-wrapper" id="swiper_list"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</header>
+<!--header end-->
+<section class="container mteacher_name">
+
+<div class="mteacher_name_tab">
+    <!--<small>共有{--ZL.Label id="查询老师成交订单数_根据老师名" uname="{SField sid="老师申请数据源标签" FD="Title" page="0"/}" /}个成交订单</small> <br />-->
+   
+    <div><i class="zi zi_service" style="font-size:20px;"></i>{SField sid="老师申请数据源标签" FD="Title" page="0"/}</div>
+    <div>
+        <i class="zi zi_home"></i> 
+        {SField sid="老师申请数据源标签" FD="xxdz" page="0"/}
+        {SField sid="老师申请数据源标签" FD="dizi" page="0"/}
+    </div>
+    <div>
+        <i class="zi zi_subway"></i>
+        {SField sid="老师申请数据源标签" FD="dtzxz" page="0"/}
+    </div>
+    <div>
+        <i class="zi zi_flagBold"></i>
+        {SField sid="老师申请数据源标签" FD="zdybq" page="0"/}
+    </div>
+    <div>
+        <i class="zi zi_IDcard"></i>
+        <small id="info_jl"></small>
+        <small id="info_jzxx"></small>
+        <small>{SField sid="老师申请数据源标签" FD="jxfw" page="0"/}</small>
+        <small style="border-right:none;">{SField sid="老师申请数据源标签" FD="jxms" page="0"/}</small>
+    </div>
+    
+ </div>
+	
+	<form id="form7" name="form7" method="post" action="/PubAction.aspx">
+	<div hidden>
+	<input type="hidden" name="PubID" id="PubID" value="7" />
+	<input type="hidden" name="PubContentid" id="PubContentid" value="0" />
+	<input type="hidden" name="PubInputer" id="PubInputer" value="{PubInputer/}" />
+	<div class="form-group">
+	<label for="PubTitle">评论标题：</label>
+	<input type="text" class="form-control" id="PubTitle" name="PubTitle" value="{SField sid="老师申请数据源标签" FD="Title" page="0"/}的课程"/>{PubCode/}
+	</div>
+	<div class="form-group">
+	<label for="PubTitle">下单人：</label>
+	<input type="text" class="form-control" id="xsr" name="xsr" value="{ZL:GetuserName()/}"/>
+	</div>
+	<div class="form-group">
+	<label for="PubTitle">下单人ID：</label>
+	<input type="text" class="form-control" id="xsrid" name="xsrid" value="{ZL:GetuserID()/}"/>
+	</div>
+	<div class="form-group">
+	<label for="PubTitle">商品名称：</label>
+	<input type="text" class="form-control" id="spmc" name="spmc" value="{SField sid="老师申请数据源标签" FD="Title" page="0"/}的收费课程"/>
+	</div>
+	<div class="form-group">
+	<label for="PubTitle">订单价格：</label>
+	<input type="text" class="form-control" id="dsjg" name="dsjg" value="{SField sid="老师申请数据源标签" FD="kcdj" page="0"/}"/>
+	</div>
+	<div class="form-group">
+	<label for="PubTitle">店家ID：</label>
+	<input type="text" class="form-control" id="djid" name="djid"/>
+	</div>
+	<div class="form-group">
+	<label for="PubTitle">商品发布人ID：</label>
+	<input type="text" class="form-control" id="spfbrid" name="spfbrid" value="{SField sid="老师申请数据源标签" FD="SuccessfulUserID" page="0"/}"/>
+	</div>
+	<div class="form-group">
+	<label for="PubTitle">内容GID：</label>
+	<input type="text" class="form-control" id="nrgid" name="nrgid" value="{SField sid="老师申请数据源标签" FD="GeneralID" page="0"/}"/>
+	</div>
+	
+	<div class="form-group">
+	<label for="PubContent">评论内容：</label>
+		<input type="text" class="form-control" id="PubContent" name="PubContent" value="{SField sid="老师申请数据源标签" FD="Title" page="0"/}的收费课程,家长56，用心为您服务"/>
+	</div>
+	</div>
+
+
+	<div class="mteacher_btn_link">
+	<div class="btn-group" role="group" aria-label="Basic ">
+
+<div class="mteacher_btn_link_tel{ZL.Label id="获取当前用户会员组" /}">
+	<button type="button"  id="button" class="btn btn-success btn-sm" onclick="postPub();"><i class="zi zi_cartarrowPlus"></i> 电话联系</button>
+	</div>
+    <div class="modal fade" id="Result_Modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+				    <h6 class="modal-title">恭喜！</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="text-center p-5">
+                     获得该老师的联系方式，<br/>请电话联系：{ZL.Label id="根据inputer抽出会员手机" UserID="{SField sid="老师申请数据源标签" FD="SuccessfulUserID" page="0"/}" /}
+                     <div id="pub_tip" style="color:red;text-align:center;"></div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+
+<!--	<button type="button" class="btn btn-outline-success btn-sm"><i class="zi zi_phonesquare"></i> 电话xx联系</button>-->
+<!--	<a href="/User/Message/MessageSend"  class="btn btn-outline-success btn-sm"><i class="zi zi_envelope"></i> 短信</a>-->
+	</div>
+		<small class="d-block">↑仅限家长联系</small>
+
+	</div>
+
+</form>
+	
+
+</section>
+<!--mteacher_name end-->
+
+<section class="container mteacher_teaching">
+<strong><i class="zi zi_squareBook"></i> 教学特点</strong>
+<div class="mteacher_teaching_con">{SField sid="老师申请数据源标签" FD="jxtd" page="0"/}</div>
+</section>
+<!--mteacher_teaching end-->
+
+<section class="container mteacher_teaching">
+<strong><i class="zi zi_squareBook"></i> 教学经历</strong>
+<div class="mteacher_teaching_con">{SField sid="老师申请数据源标签" FD="jxjl" page="0"/}</div>
+</section>
+<!--mteacher_teaching end-->
+
+<section class="container mteacher_teaching">
+<strong><i class="zi zi_squareBook"></i> 成功案例</strong>
+<div class="mteacher_teaching_con">{SField sid="老师申请数据源标签" FD="cgal" page="0"/}</div>
+</section>
+<!--mteacher_teaching end-->
+
+
+<section class="container mteacher_teaching mteacher_teaching_bottom">
+<div id="tip_comm" class="alert alert-info" style="display:none;">登录后才可查看评论</div>
+<div id="iframe_comm" class="iframe_comm" style="display:none;">
+    <iframe id="comm_ifr" scrolling="no" onload="IfrAutoHeight();" src='/User/Order/ShareList?ProID={SField sid="老师申请数据源标签" FD="GeneralID" page="0"/}' style="width:100%;" align="middle" frameborder="0"></iframe>
+    <script>
+        var uid="{ZL:GetuserID()/}";
+    </script>
+    <script>
+        function commentAnchor() { $("html,body").animate({ scrollTop: $("#iframe_comm").offset().top - 100 }, 300); }
+        function IfrAutoHeight() { var $ifr = $("#comm_ifr"); $ifr.height($ifr.contents().height()); }
+        if(uid=="0"){ $("#tip_comm").show(); }
+        else{ $("#iframe_comm").show(); }
+    </script>
+</div>
+</section>
+<!--mteacher_teaching end-->
+
+{ZL.Label id="移动端底部"/}
+
+</body>
+<script>
+//ajax提交互动
+	 function postPub(){
+	   var form={};
+	   $("#form7 input").each(function(){
+	     var $this=$(this);
+		 var name=$this.attr("name");
+		 if(!name){return;}
+		 form[name]=$this.val();
+	   });
+	   $("#Result_Modal").modal("show");
+	   $("#pub_tip").html("");
+	   $.post("/PubAction.aspx",form,function(data){
+	       var model=APIResult.getModel(data);
+	       if(model.retmsg){ $("#pub_tip").html(model.retmsg);}
+	   })
+	 }
+</script>
+<script>
+var txStr='{SField sid="老师申请数据源标签" FD="tx" page="0"/}';
+var tx=JSON.parse(txStr==''?'[]':txStr);
+if(tx&&tx.length>0){tx=siteUrl+tx[0].url;}
+else{ tx="";}
+
+var shareInfo=wxHelper.newShare();
+if(tx){shareInfo.imgUrl=tx;}
+shareInfo.imgUrl=wxHelper.urlDeal(shareInfo.imgUrl);
+shareInfo.desc = "点击查阅名师详情";
+shareInfo.title = "{SField sid="老师申请数据源标签" FD="Title" page="0"/}";
+if(shareInfo.title.indexOf("老师")<0){shareInfo.title+="老师";}
+wxHelper.init();
+</script>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>345</LabelID>
+    <LabelName>判断是否申请</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>ModeID,0,1,模型ID</LabelParam>
+    <LabelTable>ZL_C_lssq LEFT JOIN ZL_CommonModel ON ZL_C_lssq.ID=ZL_CommonModel.ItemID</LabelTable>
+    <LabelField>Status</LabelField>
+    <LabelWhere> ModelID=@ModeID  And ZL_C_lssq.yhid={ZL:GetuserID()/}</LabelWhere>
+    <LabelOrder />
+    <LabelContent>{Field="Status"/}</LabelContent>
+    <LabelCount>1</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent>98</EmptyContent>
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_C_lssq","tb_s":"ZL_CommonModel"}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>360</LabelID>
+    <LabelName>判断当前用户是否提交信息</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam />
+    <LabelTable>ZL_CommonModel</LabelTable>
+    <LabelField>*</LabelField>
+    <LabelWhere>(NodeID=36 or FirstNodeID=36 ) and  Inputer='{ZL:GetuserName()/}' </LabelWhere>
+    <LabelOrder />
+    <LabelContent>true</LabelContent>
+    <LabelCount>1</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent>false</EmptyContent>
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_CommonModel","tb_s":""}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

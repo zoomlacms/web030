@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>369</LabelID>
+    <LabelName>获取店铺名称</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>UserID,1,1,用户ID</LabelParam>
+    <LabelTable>ZL_CommonModel LEFT JOIN ZL_C_djmx ON ZL_CommonModel.ItemID=ZL_C_djmx.ID</LabelTable>
+    <LabelField>StoresName</LabelField>
+    <LabelWhere> ZL_CommonModel.ModelID=56 And ZL_C_djmx.djid=@UserID</LabelWhere>
+    <LabelOrder />
+    <LabelContent>{Field="StoresName"/}</LabelContent>
+    <LabelCount>1</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_CommonModel","tb_s":"ZL_C_djmx"}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

@@ -1,0 +1,439 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="msapplication-TileColor" content="#1A0066"/>
+<meta name="msapplication-TileImage" content="/images/win8_symbol_140x140.png"/>
+<title>{$SiteName/}_首页</title>
+{$MetaKeywords/}
+{$MetaDescription/}
+{ZL:Boot4()/}
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+{ZL:GetCSS(1,0)/}
+<link href="/dist/css/animate.min.css" rel="stylesheet"/>
+<script src="/js/scrolltopcontrol.js"></script>
+</head>
+<body>
+<header>
+<nav class="navbar navbar-expand-md navbar-light fixed-top home_navbar">
+<a class="navbar-brand" href="/"><img src="{$LogoUrl/}" alt="{$SiteName/}"></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsHome" aria-controls="navbarsHome" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+<div class="collapse navbar-collapse" id="navbarsHome">
+<ul class="navbar-nav mr-auto  ml-auto main_nav">
+  <li class="nav-item active"><a class="nav-link" href="/">主页</a></li>
+  <li class="nav-item"><a class="nav-link" href="{ZL:GetNodeLinkUrl(1)/}">新闻中心</a></li>
+  <li class="nav-item"><a class="nav-link" href="{ZL:GetNodeLinkUrl(17)/}">课程中心</a></li>
+  <li class="nav-item"><a class="nav-link" href="{ZL:GetNodeLinkUrl(2)/}">学习资源</a></li>
+  <li class="nav-item"><a class="nav-link" href="{ZL:GetNodeLinkUrl(3)/}">名师介绍</a></li>
+  <li class="nav-item"><a class="nav-link" href="{ZL:GetNodeLinkUrl(4)/}">专题专栏</a></li>
+  <li class="nav-item"><a class="nav-link" href="{ZL:GetNodeLinkUrl(5)/}">关于</a></li>
+</ul>
+<div class="navbar-nav my-2 my-md-0 login_nav">
+  <li class="nav-item"><a class="nav-link" href="/User">会员</a></li>
+  <li class="nav-item QRcode_box"><a class="nav-link" href="#"><i class="zi zi_tmWeixin"></i></a>
+  <div class="QRcode"><img src="{$Banner/}" alt="微信公众号"></div>
+  </li>
+  
+    <li class="search_form">
+  <form action="/Search/SearchList" target="_blank">
+	<input name="keyword" type="text" placeholder="全站检索" class="form-control">
+	<button><i class="zi zi_search"></i></button>
+  </form>
+  </li>
+  <li class="nav-item"><a class="nav-link"  onclick="isSearch()"><i class="zi zi_search"></i></a></li>
+</div>
+</div>
+</nav>
+<!--navbar end-->
+
+<section class="home_banner">
+<div class="container">
+	<h1>精益-打造优秀的社会化教育体系</h1>
+	<a href="{ZL:GetNodeLinkUrl(34)/}?d=1" class="start">开始体验</a>
+	<a href="#homeTeam" class="down"><i class="zi zi_forDown"></i></a>
+</div>
+</section>
+<!--banner end-->
+</header>
+<section class="home_teacher">
+<div class="container">
+<div class="row">
+<div class="col-md-9 row teacher_sm">
+	{ZL.Label id="文章缩略图_带标题简介_首页教师" NodeID="3" TitleNum="20" ShowNum="6" synNum="34" /}
+</div>
+<div class="col-md-3 teacher_lg">
+	<a href="{ZL:GetInfoUrl(10)/}">
+	<div class="image" style="background:url('{$CssDir/}Images/teacher05.jpg') no-repeat center; background-size: cover">
+	<div class="keyWord">
+	吴老师
+	</div>
+	</div>
+	<div class="text"><strong>小胡</strong> / 特级教师</div>
+	<small>专注幼儿教育，擅长讲故事</small>
+	</a>
+</div>
+</div>
+</div>
+</section>
+<!--teacher end-->
+
+<section class="home_team" id="homeTeam">
+<div class="container">
+<strong class="title">推荐优秀团队</strong>
+<div class="row">
+<div class="col-md-3">
+<div class="team_t">
+<a href="" class="image"><img src="{$CssDir/}Images/teamlogo01.jpg" alt=""></a>
+<a href="" class="title"><strong class="team_n">进击科技</strong></a>
+<p>移动教育的一站式服务。</p>
+</div>
+<div class="team_l">
+<ul>
+<li><i class="zi zi_check"></i>幼儿教育</li>
+<li><i class="zi zi_check"></i>线下学堂</li>
+<li><i class="zi zi_check"></i>特色学前班</li>
+</ul>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="team_t">
+<a href="" class="image"><img src="{$CssDir/}Images/teamlogo03.jpg" alt=""></a>
+<a href="" class="title"><strong class="team_n">一鸣工作室</strong></a>
+<p>产品 = new (想法)</p>
+</div>
+<div class="team_l">
+<ul>
+<li><i class="zi zi_check"></i>职业教育</li>
+<li><i class="zi zi_check"></i>代办公务员报名</li>
+<li><i class="zi zi_check"></i>驾照考级服务</li>
+</ul>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="team_t">
+<a href="" class="image"><img src="{$CssDir/}Images/teamlogo02.jpg" alt=""></a>
+<a href="" class="title"><strong class="team_n">SPACE</strong></a>
+<p>移动教育的一站式服务。</p>
+</div>
+<div class="team_l">
+<ul>
+<li><i class="zi zi_check"></i>特色政法教育</li>
+<li><i class="zi zi_check"></i>线下学堂</li>
+<li><i class="zi zi_check"></i>特色学前班</li>
+</ul>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="team_t">
+<a href="" class="image"><img src="{$CssDir/}Images/teamlogo04.jpg" alt=""></a>
+<a href="" class="title"><strong class="team_n">进击科技</strong></a>
+<p>移动教育的一站式服务。</p>
+</div>
+<div class="team_l">
+<ul>
+<li><i class="zi zi_check"></i>幼儿教育</li>
+<li><i class="zi zi_check"></i>线下学堂</li>
+<li><i class="zi zi_check"></i>特色学前班</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!--team end-->
+
+<section class="home_server row">
+<ul class="row col-9">
+<li class="col-4">
+<a>
+<div class="server_cm"><img src="{$CssDir/}Images/server.jpg" alt=""></div>
+</a>
+</li>
+<li class="col-4">
+<a href="{ZL:GetNodeLinkUrl(1)/}">
+<div class="server_ct"> 
+<div class="server_ctc">
+<strong>学习园地<i class="zi zi_longarrowaltright"></i></strong>
+<p>汇聚中国一线的教育资源，你可以通过这里学习到各种类别的课程，而且全年不休，实时在线的网上大学。</p>
+<span class="red">了解更多</span>
+</div>
+</div>
+</a>
+</li>
+<li class="col-4">
+<a>
+<div class="server_cm"><img src="{$CssDir/}Images/server03.jpg" alt=""></div>
+</a>
+</li>
+<li class="col-4">
+<a href="{ZL:GetNodeLinkUrl(2)/}">
+<div class="server_ct"> 
+<div class="server_ctc">
+<strong>特色教育<i class="zi zi_longarrowaltright"></i></strong>
+<p>汇聚中国一线的教育资源，你可以通过这里学习到各种类别的课程，而且全年不休，实时在线的网上大学。</p>
+<span class="red">了解更多</span>
+</div>
+</div>
+</a>
+</li>
+<li class="col-4">
+<a>
+<div class="server_cm"><img src="{$CssDir/}Images/server02.jpg" alt=""></div>
+</a>
+</li>
+<li class="col-4">
+<a href="{ZL:GetNodeLinkUrl(3)/}">
+<div class="server_ct"> 
+<div class="server_ctc">
+<strong>专家团队<i class="zi zi_longarrowaltright"></i></strong>
+<p>汇聚中国一线的教育资源，你可以通过这里学习到各种类别的课程，而且全年不休，实时在线的网上大学。</p>
+<span class="red">了解更多</span>
+</div>
+</div>
+</a>
+</li>
+</ul>
+<div class="last col-3">
+<a href="{ZL:GetNodeLinkUrl(4)/}" >
+<div class="server_ct"> 
+<div class="server_ctc">
+<strong>考级拿证<i class="zi zi_longarrowaltright"></i></strong>
+<p>汇聚中国一线的教育资源，你可以通过这里学习到各种类别的课程，而且全年不休，实时在线的网上大学。</p>
+<span class="red">了解更多</span>
+</div>
+</div>
+<div class="server_cm"><img src="{$CssDir/}Images/server04.jpg" alt=""></div>
+</a>
+</div>
+<div class="clearfix"></div>
+</section>
+<!--server end-->
+
+<section class="home_free">
+<div class="container">
+<div class="title">
+<strong>免费分享线上课程</strong>
+<p>让每一个教育机构都有自己的分享网络</p>
+</div>
+<div class="free_content row">
+<div class="col-md-3">
+<a href="{ZL:GetNodeLinkUrl(2)/}">
+<i class="zi zi_textbook"></i>
+<span>专注</span>
+</a>
+</div>
+<div class="col-md-3">
+<a href="{ZL:GetNodeLinkUrl(2)/}">
+<i class="zi zi_venusdouble"></i>
+<span>协同</span>
+</a>
+</div>
+<div class="col-md-3">
+<a href="{ZL:GetNodeLinkUrl(2)/}">
+<i class="zi zi_www"></i>
+<span>共享</span>
+</a>
+</div>
+<div class="col-md-3">
+<a href="{ZL:GetNodeLinkUrl(2)/}">
+<i class="zi zi_sitemap"></i>
+<span>网络</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!--free end-->
+
+<section class="home_student">
+<div class="title">
+<span>优秀学员</span>
+</div>
+<div class="mtv_solu">
+<div class="solu-body">
+<div class="solu-left-right" style="width: 1567px; margin-left: -783.5px;">
+<div class="solu-left"><a href="javascript:;"><i class="zi zi_forLeft"></i></a></div>
+<div class="solu-right"><a href="javascript:;"><i class="zi zi_forRight"></i></a></div>
+</div>
+<div class="solu-body-child" style="width: 1526px;">
+<div class="solu-floor"></div>
+<div class="solu-item-box" style="margin-left: 0px; left: 0px;">
+<div class="solu-item-warp">
+	<div class="solu-item" style="height: 340px; margin-top: 20px;">
+	<div class="solu-item-img solu-item-img1"></div>
+	<p class="solu-item-title">赵小明</p>
+	<p class="solu-item-text">
+	岳阳一小五年级班长，出生于湖南的少年从小就梦想着有一般大作为，喜欢做实验，是的的优秀少先队员...
+	</p>
+	<a href="" class="solu-item-details" style="display: none;">了解更多</a>
+	</div>
+	</div>
+	<div class="solu-item-warp">
+	<div class="solu-item" style="margin-top: 20px; height: 340px;">
+	<div class="solu-item-img solu-item-img2"></div>
+	<div class="solu-item-title">汪小鹤</div>
+	<p class="solu-item-text">
+	岳阳一小五年级班长，出生于湖南的少年从小就梦想着有一般大作为，喜欢做实验，是的的优秀少先队员...
+	</p>	
+	<a href="" class="solu-item-details" style="display: none;">了解更多</a>
+	</div>
+	</div>
+	<div class="solu-item-warp solu-item-active">
+	<div class="solu-item" style="height: 390px; margin-top: 0px;">
+	<div class="solu-item-img solu-item-img3"></div>
+	<p class="solu-item-title">李小东</p>
+	<p class="solu-item-text">
+	岳阳一小五年级班长，出生于湖南的少年从小就梦想着有一般大作为，喜欢做实验，是的的优秀少先队员...
+	</p>	
+	<a href="" class="solu-item-details" style="display: inline;">了解更多</a>
+	</div>
+	</div>
+	<div class="solu-item-warp">
+	<div class="solu-item" style="height: 340px; margin-top: 20px;">
+	<div class="solu-item-img solu-item-img4"></div>
+	<p class="solu-item-title">王小红</p>
+	<p class="solu-item-text">
+	<p class="solu-item-text">
+	岳阳一小五年级班长，出生于湖南的少年从小就梦想着有一般大作为，喜欢做实验，是的的优秀少先队员...
+	</p>
+	</p>
+	<a href="" class="solu-item-details" style="display: none;">了解更多</a>
+	</div>
+	</div>
+	<div class="solu-item-warp">
+	<div class="solu-item" style="height: 340px; margin-top: 20px;">
+	<div class="solu-item-img solu-item-img5"></div>
+	<p class="solu-item-title">杜小腾</p>
+	<p class="solu-item-text">
+	岳阳一小五年级班长，出生于湖南的少年从小就梦想着有一般大作为，喜欢做实验，是的的优秀少先队员...
+	</p>	
+	<a href="" class="solu-item-details" style="display: none;">了解更多</a>
+	</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!--student end-->
+
+<section class="home_news">
+<div class="container">
+<div class="title">
+<span>新闻与活动</span>
+</div>
+<div class="news_list">
+<ul>
+{ZL.Label id="文章缩略图_带标题简介_首页新闻" NodeID="1" TitleNum="30" ShowNum="10" synNum="160" /}
+</ul>
+</div>
+
+<div class="more">
+<a href="{ZL:GetNodeLinkUrl(1)/}"><i class="zi zi_longarrowaltright"></i></a>
+</div>
+</div>
+</section>
+<!--news end-->
+
+<footer class="homeFooter">
+<div class="container">
+<ul>
+<li><a href="{ZL:GetNodeLinkUrl(5)/}">关于我们</a></li>
+<li><a href="#">特色教育</a></li>
+<li><a href="{ZL:GetNodeLinkUrl(14)/}">使用帮助</a></li>
+<li><a href="{ZL:GetInfoUrl(30)/}">服务条款</a></li>
+<li><a href="{ZL:GetInfoUrl(1)/}">联系我们</a></li>
+<li><a href="{ZL:GetInfoUrl(29)/}">隐私安全</a></li>
+<li><a href="{ZL:GetInfoUrl(18)/}">版权声明</a></li>
+<li><a href="{ZL:GetNodeLinkUrl(16)/}">网站地图</a></li>
+</ul>
+<p>{$Copyright/}</p>
+</div>
+</footer>
+
+<div class="gzh fixed-bottom">
+<div class="container">
+<strong>官方微信公众号2.0版改版上线</strong>
+<div class="image"><img src="{$CssDir/}Images/gzh.png" alt=""><a><i class="zi zi_times"></i></a></div>
+<div class="text">
+<span>在线学习</span>
+<span>极速分销</span>
+<span>线上课程</span>
+<span><a href="{ZL:GetNodeLinkUrl(34)/}">一号抵达</a></span>
+</div>
+</div>
+</div>
+
+<script src="{$CssDir/}js/solu.js"></script>
+<script>
+/*循环截取字符串*/
+$('.home_teacher .image .keyWord').html(function(ar){
+var tags=$(this).html();
+var ar=""
+aa=tags.split(",");
+for(i in aa){
+	ar+="<span>"+aa[i]+"</span>"
+	return ar;
+};
+})
+
+//关闭公众号横条
+$('.gzh .image a').click(function(){
+	$('.gzh').fadeOut();
+});
+//头部滚动
+$(window).scroll(function(){
+	if($(window).scrollTop()>0){
+		$(".home_navbar").addClass("barShow")
+	}
+	else{
+		$(".home_navbar").removeClass("barShow");
+	}
+});
+//for seacrh
+function isSearch(){
+if($(".home_navbar .navbar-nav .search_form").is(":hidden")){
+	$(".home_navbar .navbar-nav li").hide();
+	$(".home_navbar .navbar-nav .search_form").show();
+	$(".home_navbar div.navbar-nav li:last-child").show();
+	$(".home_navbar div.navbar-nav li:last-child i").removeClass("zi_search").addClass("zi_times");
+}else{
+	$(".home_navbar .navbar-nav li").show();
+	$(".home_navbar .navbar-nav .search_form").hide();
+	$(".home_navbar div.navbar-nav li:last-child").show();
+	$(".home_navbar div.navbar-nav li:last-child i").removeClass("zi_times").addClass("zi_search");
+	}
+}
+
+
+/* 判断PC端与移动端*/
+var mobile_bs = {
+ versions: function() {
+  var u = navigator.userAgent;
+  return {
+   trident: u.indexOf('Trident') > -1, //IE内核
+   presto: u.indexOf('Presto') > -1, //opera内核
+   webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+   gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+   mobile: !! u.match(/AppleWebKit.*Mobile.*/) || !! u.match(/AppleWebKit/) && u.indexOf('QIHU') && u.indexOf('QIHU') > -1 && u.indexOf('Chrome') < 0, //是否为移动终端
+   ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+   android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+   iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+   iPad: u.indexOf('iPad') > -1,  //是否iPad
+   webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+  }
+ } ()
+};
+if (mobile_bs.versions.mobile) {
+ if (mobile_bs.versions.android || mobile_bs.versions.iPhone || mobile_bs.versions.iPad || mobile_bs.versions.ios) {
+  window.location.href = "/Class_34/Default.aspx?d=19";
+ }
+}; 
+
+
+</script>
+</body>
+</html>

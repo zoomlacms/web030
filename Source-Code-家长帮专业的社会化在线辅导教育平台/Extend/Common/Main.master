@@ -1,0 +1,103 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Main.master.cs" Inherits="Extend_Common_Main" ClientIDMode="Static" %>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/dist/css/bootstrap4.min.css" rel="stylesheet"/>
+<link href="/dist/css/zico.min.css" rel="stylesheet"/>
+<link href="/dist/css/weui.min.css" rel="stylesheet" />
+<link href="/dist/css/ZLico.css" rel="stylesheet" />
+<link href="/Template/Gredu/style/global.css?v=<%:ZoomLa.Sns.ExConast.V%>" rel="stylesheet" />
+<script src="/JS/jquery.min.js" ></script>
+<script src="/dist/js/popper.min.js"></script>
+<script src="/dist/js/bootstrap4.min.js"></script>
+<script src="/dist/js/weui.js"></script>
+<script src="/JS/ICMS/ZL_Common.js"></script>
+<script src="/JS/jquery.validate.min.js"></script>
+<script src="/JS/ZL_Regex.js"></script>
+<script src="/JS/Modal/APIResult.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="/Extend/assets/extend.js?v=<%:ZoomLa.Sns.ExConast.V %>"></script>
+<style type="text/css">
+.mteacher_header{position:fixed;top:0px;width:100%;}
+.empty_tip{text-align:center;width:50%;margin:50px auto;display:none;}
+.empty_tip .zi{font-size:10rem;color:#ddd;}
+.empty_tip .text{color:#999;font-size:20px;}
+.mbtab{width:95%;margin:0 auto;text-align:center;display:flex;padding:5px 8px;}
+.mbtab .item{width:50%;margin-right:5px; border:1px solid #ddd;border-radius:5px;padding:3px 5px;position:relative;}
+.mbtab .item.active{background-color:#0094ff;color:#fff;}
+.mbtab-panel{display:none;}
+.mbtab-panel.active{display:block;}
+
+.hidden{display:none;}
+.zi_signoutalt{font-size:1.5rem;}
+
+
+
+</style>
+<asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+<form id="form1" runat="server">
+<asp:ContentPlaceHolder ID="Content" runat="server"></asp:ContentPlaceHolder>
+<div style="height:45px;"></div>
+<%--<section class="mhome_footer  d-block  d-sm-none" style="z-index: 999;">
+    <ul>
+        <li id="tab_home"><a href="/Class_34/Default.aspx"><i class="zi zi_home"></i>
+            <label>首页</label></a></li>
+        <li id="tab_ms"><a href="/extend/ms.aspx"><i class="zi zi_bookopen"></i>
+            <label>名师</label></a></li>
+        <li id="tab_bar"><a href="/PClass?id=22"><i class="zi zi_chalkboard"></i>
+            <label>讨论</label></a></li>
+        <li id="tab_me" style="position:relative;" class="active"><a href="/User/"><i class="zi zi_useralt"></i>
+            <label>我</label>
+            <span class="tip" id="tip_me">0</span>
+        </a></li>
+    </ul>
+</section>--%>
+<%=Call.GetLabel("{ZL.Label id=\"移动端底部\"/}") %>
+<asp:ContentPlaceHolder ID="Script" runat="server"></asp:ContentPlaceHolder>
+<asp:ContentPlaceHolder ID="ScriptContent" runat="server"></asp:ContentPlaceHolder>
+<script>
+    var mbtab = {};
+    //切换
+    mbtab.set = function (dom) {
+        var $this = $(dom);
+        mbtab.setActive(dom);
+        //-------------
+        var $tab = $("#" + $this.data("tab") + ".mbtab-panel");
+        if ($tab.length < 1 || $tab.hasClass("active")) { return; }
+        $tab.siblings(".mbtab-panel").removeClass("active");
+        $tab.addClass("active");
+    }
+    //跳转
+    mbtab.go = function (dom) {
+        var url = $(dom).data("url");
+        if (!url) { return; }
+        var id = $(dom).attr("id");
+        if (url.indexOf("?") > 0) { url += "&tab=" + id; }
+        else { url += "?tab=" + id; }
+        location = url;
+    }
+    //为header增加active
+    mbtab.setActive = function (dom) {
+        if (!dom) { return; }
+        var $this = $(dom);
+        if ($this.hasClass("active")) { return; }
+        var $items = $(dom).siblings(".item");
+        $items.removeClass("active");
+        $this.addClass("active");
+    }
+    mbtab.init = function () {
+        //地址栏中读取信息
+        var tab = "<%:Request["tab"]%>";
+        mbtab.setActive(document.getElementById(tab));
+    }
+    $(function () {
+        mbtab.init();
+        tipHelper.get("me");
+    })
+</script>
+</form>
+</body>

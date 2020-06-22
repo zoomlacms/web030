@@ -1,0 +1,54 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>370</LabelID>
+    <LabelName>获取店铺下的老师列表</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>ShowNum,10,1,显示个数</LabelParam>
+    <LabelTable>ZL_EX_TEALISTS</LabelTable>
+    <LabelField>GeneralID,jl,jxms,Title,tx</LabelField>
+    <LabelWhere>ZL_EX_TEALISTS.ParentUserID={ZL:GetuserID()/}</LabelWhere>
+    <LabelOrder>ZL_EX_TEALISTS.GeneralID DESC</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;li&gt;
+&lt;div class="mhome_tabs_con"&gt;
+&lt;div class="mhome_tabs_con_l"&gt;&lt;a href="javasrcipt:;" class="list_left_{Field="GeneralID"/}"&gt;&lt;/a&gt; 
+  
+&lt;div class="tabs_con_l_r"&gt;&lt;strong&gt;{Field="Title"/}&lt;/strong&gt;&lt;abbr&gt;&lt;small&gt;教龄：{Field="jl"/}&lt;/small&gt; &lt;small&gt;教学模式：{Field="jxms"/}&lt;/small&gt;&lt;/abbr&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="mhome_tabs_con_r"&gt;
+&lt;a class="mbtn_link  gid_info_{Field="GeneralID"/}" href="/user/content/addtofav?infoid={Field="GeneralID"/}&amp;type=1&amp;title={Field="Title"/}&amp;url={$SiteURL/}/item/{Field="GeneralID"/}.aspx" target="_blank"&gt;&lt;i class="zi zi_heart" aria-hidden="true"&gt;&lt;/i&gt; 推荐&lt;/a&gt;
+  &lt;/div&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+      var txStr='{Field="tx"/}';
+      var imgurljson=JSON.parse(txStr==''?'[]':txStr);
+      if(imgurljson&amp;&amp;imgurljson.length>0&amp;&amp;imgurljson[0].url){
+      var imgurl=imgurljson[0].url;
+      $(".list_left_{Field="GeneralID"/}").append("&lt;img src="+imgurl+" onerror='this.onerror=null;this.src='/UploadFiles/nopic.svg''/&gt; ")
+  }else{
+  $(".list_left_{Field="GeneralID"/}").append("&lt;img src='/UploadFiles/nopic.svg'/&gt;");
+  }
+        $(".gid_info_{ZL.Label id="输出判断是否已推荐" Gid="{Field="GeneralID"/}" /}").empty().html('&lt;i class="zi zi_star"&gt;&lt;/i&gt; 已推荐');
+   $(".gid_info_{ZL.Label id="输出判断是否已推荐" Gid="{Field="GeneralID"/}" /}").attr("href","javasrcipt:;")
+
+  &lt;/script&gt;
+&lt;/li&gt;
+{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_EX_TEALISTS","tb_s":""}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

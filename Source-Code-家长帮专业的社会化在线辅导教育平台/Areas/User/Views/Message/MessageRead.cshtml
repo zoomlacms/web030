@@ -1,0 +1,64 @@
+﻿@model ZoomLa.Model.M_Message
+@using ZoomLa.BLL
+@using ZoomLa.BLL.Helper
+@{
+    B_User buser = new B_User();
+    
+}
+@section head{
+<title>阅读站内邮</title>
+<style type="text/css">
+.mb_img{max-width:50%;}
+.page_ban{display:none;}
+</style>
+}
+@section content{
+ <div class="addcontent_top"><a href="/User/Message/Message"><i class="zi zi_arrowLeft"></i></a> <small id="add_title">消息管理</small></div>
+
+
+    <div>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td class="text-right td_m">发件人</td>
+            <td>@Model.UserName</td>
+        </tr>
+        <tr>
+            <td class="text-right">收件人</td>
+            <td>@buser.GetUserNameByIDS(Model.Incept.ToString())</td>
+        </tr>
+        <tr>
+            <td class="text-right">标题</td>
+            <td>@Model.Title</td>
+        </tr>
+        <tr>
+            <td class="text-right">发送时间</td>
+            <td>@DateHelper.ToDate(Model.PostDate)</td>
+        </tr>
+        <tr>
+            <td colspan="2">@MvcHtmlString.Create(Model.Content)</td>
+        </tr>
+        @*<tr>
+            <td class="text-right">附件</td>
+            <td>
+                <div id="uploader" class="uploader"><ul class="filelist"></ul></div>
+                @Html.HiddenFor(p=>p.Attachment)
+            </td>
+        </tr>*@
+        <tr>
+            <td colspan="2" class="text-center">
+                <a href="MessageSend?uid=@Model.Sender" class="btn btn-primary">回复消息</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+}
+@section script{
+<link rel="stylesheet" href="/JS/Controls/ZL_Webup.css" />
+<script src="/JS/Controls/ZL_Webup.js"></script>
+<script>
+    $(function () {
+        ZL_Webup.AddReadOnlyLi($("#Attachment").val());
+    })
+</script>
+}

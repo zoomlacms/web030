@@ -1,0 +1,45 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>326</LabelID>
+    <LabelName>输出指定节点标题列表_带缩略图课程列表</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>NodeID,,1,节点ID|ShowNum,,1,显示数|TopImg,,1,缩略图|TitleNum,,1,标题长度|synopsis,,1,简介</LabelParam>
+    <LabelTable>ZL_CommonModel LEFT JOIN ZL_C_Article ON ZL_CommonModel.GeneralID=ZL_C_Article.ID</LabelTable>
+    <LabelField>ZL_CommonModel.CreateTime,ZL_CommonModel.GeneralID,ZL_CommonModel.Hits,ZL_CommonModel.NodeID,ZL_CommonModel.Title,ZL_CommonModel.TopImg,ZL_C_Article.author,ZL_C_Article.synopsis</LabelField>
+    <LabelWhere>(NodeID=@NodeID or FirstNodeID=@NodeID) and status=99</LabelWhere>
+    <LabelOrder>CreateTime DESC</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;div class="col-md-3"&gt;
+&lt;div class="class"&gt;
+&lt;a href="{ZL:GetInfoUrl({Field="GeneralID"/})/}"&gt;&lt;img src="{Field="TopImg"/}"  onerror="javascript:this.src='/UploadFiles/nopic.svg';"&gt;&lt;/a&gt;
+&lt;div class="text"&gt;
+&lt;a href="{ZL:GetInfoUrl({Field="GeneralID"/})/}"&gt;
+&lt;span&gt;{ZL:CutText({Field="Title"/},@TitleNum,)/}&lt;/span&gt;
+&lt;p&gt;{ZL:CutText({Field="synopsis"/},@synopsis,)/}&lt;/p&gt;
+&lt;div class="info"&gt;&lt;span class="time"&gt;{ZL:FormatDate({Field="CreateTime"/},yyyy-MM-dd)/}&lt;/span&gt;&lt;span class="hit"&gt;共被浏览了{Field="Hits"/}次&lt;/span&gt;&lt;div class="clearfix"&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="info"&gt;&lt;span class="price"&gt;免费&lt;/span&gt;&lt;span class="teacher"&gt;{Field="author"/}&lt;/span&gt;&lt;div class="clearfix"&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_CommonModel","tb_s":"ZL_C_Article"}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

@@ -1,0 +1,228 @@
+﻿@model ZoomLa.Model.M_UserRecei
+@{
+    
+}
+@section head{<title>地址管理</title>
+}
+@section content{
+<style>#u_ban{display: none;}</style>
+<div class="addcontent_top"><a href="javascript:history.back(-1)"><i class="zi zi_arrowLeft"></i></a> <small id="add_title">添加地址</small></div>
+
+
+    <div class="container btn_green btn_green_xs">
+        <form method="post" action="@MVCHelper.GetAction("Address_Add",Request)" onsubmit="return CheckForm();" class="table-responsive-md">
+		  
+		  	
+		<div class="add_aress">
+			<div class="baidu_aress">
+			  <div class="title"> <strong>选择商圈</strong></div>
+			  <div class="row">
+				  <div class="col-6">
+						<select class="form-control" id="baidu_qu">
+						</select>
+				  </div>
+				  <div class="col-6">
+					<select class="form-control" id="diqu_aress">
+					</select>
+				  </div>
+			  </div>
+			</div>
+		</div>
+		
+		
+		    <div class="input_baocun"> <input type="submit" class="btn btn-info" value="保存" /></div>  
+
+		
+		
+            <table class="table table-bordered">
+                <tr hidden>
+                    <th scope="col" class="text-right">所在地区：</th>
+                    <td scope="col" class="d-flex flex-wrap">
+                        <select id="province_dp" class="form-control w_20rem" name="province_dp"></select>
+                        <select id="city_dp" class="form-control w_20rem" name="city_dp"></select>
+                        <select id="county_dp" class="form-control w_20rem" name="county_dp"></select>
+                        <input type="hidden" id="pro_hid" name="pro_hid" value="@Model.Provinces" />
+                    </td>
+                </tr>
+                <tr>
+                    <th class="text-right">详细地址：</th>
+                    <td>
+                        <textarea id="street_t" name="street_t" class="form-control text_300 required" title="详细地址不能为空" autofocus="autofocus">@Model.Street</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="text-right">邮政编码：</th>
+                    <td>
+                        <input type="text" id="zipcode_t" name="zipcode_t" class="form-control text_300 num zipcode" maxlength="6" value="@Model.Zipcode" />
+                    </td>
+                </tr>
+                <tr>
+                    <th class="text-right">收货人姓名：</th>
+                    <td>
+                        <input type="text" id="recename_t" name="recename_t" class="form-control text_300 required" title="收货人姓名不能为空" value="@MvcHtmlString.Create(Call.GetLabel("{ZL.Label id=\"获取老师信息页Gid\" NodeID=\"37\" /}"))" />
+						
+						
+						
+                    </td>
+                </tr>
+                <tr>
+				
+				
+                    <th class="text-right">手机号码：</th>
+                    <td>
+                        <input type="text" id="mobilenum_t" name="mobilenum_t" class="form-control text_300 num phones" maxlength="13" value="15523659874" />
+                    </td>
+                </tr>
+                @*<tr>
+                    <th class="text-right">电话号码：</th>
+                    <td>
+                        <input type="text" id="area_t" name="area_t" class="form-control pull-left num" placeholder="区号" maxlength="4" style="width:80px;" value="@(string.IsNullOrEmpty(Model.phone) ? "" : Model.phone.Split('-')[0])" />
+                        <input type="text" id="phone_t" name="phone_t" class="form-control pull-left num" placeholder="号码" maxlength="8" style="width:210px;margin-left:10px;" value="@(string.IsNullOrEmpty(Model.phone) ? "":Model.phone.Split('-')[1])" />
+                    </td>
+                </tr>*@
+                <tr>
+                    <th class="text-right">默认地址：</th>
+                    <td><input type="checkbox" class="switchChk" id="Def_chk" name="Def_chk" value="1" @(Model.isDefault == 1 ? "checked=\"checked\"" : "") /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <a href="/User/info/UserRecei" class="btn btn-outline-info">返回</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+	
+	
+<script>
+//导航处理
+	$("#usernav1 ul li").removeClass("active").siblings().eq(2).addClass("active");
+</script>	
+}
+@section script{
+<!--    <link href="/App_Themes/V3.css" rel="stylesheet" />-->
+    <link href="/dist/css/bootstrap-switch.min.css" rel="stylesheet" />
+    <style type="text/css">
+        .control-sm {width: 120px;display: inline-block;}
+    </style>
+    <script src="/dist/js/bootstrap-switch.js"></script>
+    <script src="/JS/ICMS/area.js"></script>
+    <script src="/JS/Controls/ZL_PCC.js"></script>
+    <script src="/JS/ZL_Regex.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+    <script type="text/javascript" src="/Template/Gredu/style/js/CityList_min.js"></script>
+    <script>
+        $(function () {
+            ZL_Regex.B_Num(".num");
+            var pcc = new ZL_PCC("province_dp", "city_dp", "county_dp");
+            if ($("#pro_hid").val() == "") {
+                pcc.ProvinceInit();
+            }
+            else {
+                var attr = $("#pro_hid").val().split(' ');
+                pcc.SetDef(attr[0], attr[1], attr[2]);
+                pcc.ProvinceInit();
+            }
+            jQuery.validator.addMethod("phones", function (value) {
+                return ZL_Regex.isMobilePhone(value);
+            }, "请输入正确的手机号码!");
+            $("form").validate({});
+        });
+        function CheckForm() {
+            $("#pro_hid").val($("#province_dp option:selected").text() + " " + $("#city_dp option:selected").text() + " " + $("#county_dp option:selected").text());
+            var vaild = $("form").validate({ meta: "validate" });
+            return vaild.form();
+        }
+		
+		
+		/*百度地址获取*/
+		$(function(){
+		  	/*加载百度地图商圈地址*/
+			var ipLocation ={"address":"|None|CHINANET|None|None","content":{"address":"","address_detail":{"city":"上海","city_code":289,"district":"","province":"","street":"","street_number":""},"point":{"x":"114.31620010","y":"30.58108413"}},"status":0};
+
+			var bMapCityList;
+			var curCityCode;
+			$(function() 
+			{
+			curCityCode = ipLocation.content.address_detail.city_code;
+			bMapCityList = new BMapLib.CityList();
+			setLoc();
+			});
+
+			var setLoc = function()
+			{
+			var areaCode;
+			bMapCityList.getSubAreaList(curCityCode, function(json){
+			console.log(json);
+			for(i=0;i<json.sub.length;i++)
+			{
+			var area = json.sub[i];
+			$('#baidu_qu').append("<option value="+area.area_code+">" + area.area_name + "</option>");
+			}
+			//$(".city_qu li").eq(0).addClass("active");
+			areaCode = json.sub[0].area_code;
+			bMapCityList.getSubBusinessList(areaCode, function(data){
+			for(i=0;i<data.sub.length;i++)
+			{
+			var business = data.sub[i];
+			var codes=business.business_geo.split(";");
+			$('#diqu_aress').append("<option value="+business.area_name+ ">" + business.area_name + "</option>");
+			}
+			console.log(data)
+			});
+			});
+			};
+
+
+			/*select选中事件*/
+			$("#baidu_qu").change(function(){
+			var area_code=$("#baidu_qu").val();
+			//alert(area_code)
+			$('#diqu_aress').empty();
+			var sq;
+			bMapCityList.getSubBusinessList(area_code, function(data){
+				console.log(data)
+			for(i=0;i<data.sub.length;i++)
+			{
+			var business = data.sub[i];
+			//var codes=business.business_geo.split(";");
+			$('#diqu_aress').append("<option value="+business.area_name+">"+ business.area_name +"</option>");
+			}
+
+			/*获取区*/
+			var qu=$("#baidu_qu option:selected").text();
+			var quid=$("#baidu_qu").val();
+			sq=data.sub[0].area_name;
+
+			$("#txt_sq").val(sq);
+			$("#txt_quid").val(quid);
+			$("#txt_qu").val(qu)
+			  var arr = new Array(2);
+		      arr[0]=qu;
+		      arr[1]=sq;
+			  //arr[2]=quid;
+			// console.log(arr.join(","));
+			
+			  $("#street_t").val(arr.join(","))
+			});
+			})
+
+			/*select选中事件*/
+			$("#diqu_aress").change(function(){
+			//alert(666)
+			var qu=$("#baidu_qu option:selected").text();
+			var sq=$("#diqu_aress option:selected").text();
+			var quid=$("#baidu_qu").val();	
+	         var arr = new Array(2);
+		      arr[0]=qu;
+		      arr[1]=sq;
+			  //arr[2]=quid;
+			// console.log(arr.join(","));
+			
+			  $("#street_t").val(arr.join(","))
+			})
+
+		})
+    </script>
+}

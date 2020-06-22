@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="WithDraw_Add.aspx.cs" Inherits="Extend_Common_WithDraw_Add" ValidateRequest="false" %>

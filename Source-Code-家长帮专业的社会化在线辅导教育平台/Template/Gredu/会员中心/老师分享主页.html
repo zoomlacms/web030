@@ -1,0 +1,26 @@
+﻿{ZL.Source id="节点栏目信息数据源"/}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{SField sid="节点栏目信息数据源" FD="NodeName" page="0"/}_{$SiteTitle/}</title>
+{ZL:Boot4()/}
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<script type="text/javascript" src="{$CssDir/}js/server.js"></script>
+<script src="/JS/Controls/B_User.js"></script>
+{ZL:GetCSS(1,0)/}
+</head>
+<body>
+
+
+<img src={ZL:GetQCUrl({$SiteURL/}/User/Register?ParentUserID=1,150)/} alt='' />
+
+{ZL.Label id="移动端底部"/}
+</body>
+<script>
+	$(function(){
+		$(".menu4").addClass("active");	
+	})
+		
+</script>
+</html>

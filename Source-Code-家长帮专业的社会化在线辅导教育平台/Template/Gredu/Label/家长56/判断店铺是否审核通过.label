@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>348</LabelID>
+    <LabelName>判断店铺是否审核通过</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam />
+    <LabelTable>ZL_CommonModel LEFT JOIN ZL_Store_reg ON ZL_CommonModel.ItemID=ZL_Store_reg.ID</LabelTable>
+    <LabelField>ZL_CommonModel.Status</LabelField>
+    <LabelWhere> ZL_CommonModel.ModelID=24  And ZL_Store_reg.UserID={ZL:GetuserID()/}</LabelWhere>
+    <LabelOrder />
+    <LabelContent>{Field="Status"/}</LabelContent>
+    <LabelCount>1</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent>98</EmptyContent>
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_CommonModel","tb_s":"ZL_Store_reg"}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

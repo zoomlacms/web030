@@ -1,0 +1,38 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>337</LabelID>
+    <LabelName>输出评论列表</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>ShowNum,1,1,显示个数|TitleNum,30,1,标题长度|NodeID,1,1,NodeID|ConNum,50,1,内容长度</LabelParam>
+    <LabelTable>ZL_CommonModel LEFT JOIN ZL_C_pl ON ZL_CommonModel.ItemID=ZL_C_pl.ID</LabelTable>
+    <LabelField>GeneralID,Title,fbr,dbo.ZL_StripeTrimstr(content) as con</LabelField>
+    <LabelWhere>( NodeID=@NodeID  or FirstNodeID=@NodeID)  And Status=99</LabelWhere>
+    <LabelOrder>ZL_CommonModel.CreateTime DESC</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;a href="{ZL:GetInfoUrl({Field="GeneralID"/})/}"&gt;&lt;li&gt;
+  &lt;strong&gt;&lt;i class="zi zi_commentdots"&gt;&lt;/i&gt; {ZL:CutText({Field="Title"/},@TitleNum,...)/}&lt;/strong&gt;
+&lt;p&gt;{ZL:CutText({Field="con"/},@ConNum,...)/}&lt;/p&gt;
+&lt;small&gt;发布人：{Field="fbr"/}&lt;/small&gt;  &lt;small&gt;评论：{ZL.Label id="输出评论数" Gid="{Field="GeneralID"/}" /}&lt;/small&gt;
+&lt;/li&gt;
+&lt;/a&gt;
+{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_CommonModel","tb_s":"ZL_C_pl"}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

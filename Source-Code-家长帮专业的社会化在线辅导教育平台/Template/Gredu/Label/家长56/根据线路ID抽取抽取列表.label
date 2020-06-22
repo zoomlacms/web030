@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>391</LabelID>
+    <LabelName>根据线路ID抽取抽取列表</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>order,asc$desc,3,order排序|ShowNum,100,1,显示个数</LabelParam>
+    <LabelTable>ZL_Grade</LabelTable>
+    <LabelField>GradeID</LabelField>
+    <LabelWhere> Cate=12 And ParentID=0</LabelWhere>
+    <LabelOrder>ZL_Grade.GradeID @order</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;div class="tab-pane fade home{ZL:jsq}" id="home{Field="GradeID"/}"&gt;&lt;ul&gt;
+{ZL.Label id="输出地铁所有站点" ParentID="{Field="GradeID"/}" order="asc" ShowNum="100" /}
+  &lt;/ul&gt;&lt;/div&gt;
+{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_Grade","tb_s":""}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

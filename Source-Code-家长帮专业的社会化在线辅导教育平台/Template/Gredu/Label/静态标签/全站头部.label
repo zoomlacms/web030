@@ -1,0 +1,57 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>318</LabelID>
+    <LabelName>全站头部</LabelName>
+    <LabelType>1</LabelType>
+    <LabelCate>静态标签</LabelCate>
+    <LabelDesc />
+    <LabelParam />
+    <LabelTable />
+    <LabelField />
+    <LabelWhere />
+    <LabelOrder />
+    <LabelContent>&lt;nav class="navbar navbar-expand-md navbar-dark fixed-top home_navbar"&gt;
+&lt;a class="navbar-brand" href="/"&gt;&lt;img src="{$CssDir/}Images/LOGO_pc.png" alt=""&gt;&lt;/a&gt;
+&lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsHome" aria-controls="navbarsHome" aria-expanded="false" aria-label="Toggle navigation"&gt; &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt; &lt;/button&gt;
+&lt;div class="collapse navbar-collapse" id="navbarsHome"&gt;
+&lt;ul class="navbar-nav mr-auto  ml-auto main_nav"&gt;
+  &lt;li class="nav-item active"&gt;&lt;a class="nav-link" href="/"&gt;主页&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="{ZL:GetNodeLinkUrl(1)/}"&gt;新闻中心&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="{ZL:GetNodeLinkUrl(17)/}"&gt;课程中心&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="{ZL:GetNodeLinkUrl(2)/}"&gt;学习资源&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="{ZL:GetNodeLinkUrl(3)/}"&gt;名师介绍&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="{ZL:GetNodeLinkUrl(4)/}"&gt;专题专栏&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="{ZL:GetInfoUrl(19)/}"&gt;关于&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="navbar-nav my-2 my-md-0 login_nav"&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="/User"&gt;用户登录&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;&lt;i class="zi zi_tmWeixin"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="search_form"&gt;
+  &lt;form action="/Search/SearchList" target="_blank"&gt;
+	&lt;input name="keyword" type="text" placeholder="全站检索" class="form-control"&gt;
+	&lt;button&gt;&lt;i class="zi zi_search"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/form&gt;
+  &lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link"  onclick="isSearch()"&gt;&lt;i class="zi zi_search"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/nav&gt;
+&lt;!--navbar end--&gt;</LabelContent>
+    <LabelCount />
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType />
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

@@ -1,0 +1,39 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>400</LabelID>
+    <LabelName>输出老师的订单列表_上月成交数</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>ShowNum,10,1,显示个数</LabelParam>
+    <LabelTable>ZL_Pub_dsmx</LabelTable>
+    <LabelField>PubAddTime,spmc,xsr,nrgid,xsrid</LabelField>
+    <LabelWhere> ZL_Pub_dsmx.spfbrid={ZL:GetuserID()/} and  status_order=99 and
+datediff(Month,PubAddTime,getdate())=1</LabelWhere>
+    <LabelOrder>ZL_Pub_dsmx.PubAddTime DESC</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;li&gt;
+&lt;span&gt;{Field="spmc"/}&lt;/span&gt;
+&lt;div class="cart_list_info"&gt;
+&lt;small&gt;下单时间：{ZL:FormatDate({Field="PubAddTime"/},yyyy-MM-dd)/}&lt;/small&gt;&lt;small&gt;下单人：{Field="xsr"/}&lt;/small&gt;&lt;a href="/User/Message/MessageSend?uid={Field="xsrid"/}&amp;title=老师的信息发送" class="btn btn-outline-success btn-sm"&gt;&lt;i class="zi zi_fly"&gt;&lt;/i&gt; 联系家长&lt;/a&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_Pub_dsmx","tb_s":""}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

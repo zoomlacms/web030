@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>393</LabelID>
+    <LabelName>老师是否完善资料_根据当前用户</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>教育</LabelCate>
+    <LabelDesc />
+    <LabelParam>NodeID,0,1,节点ID</LabelParam>
+    <LabelTable>ZL_CommonModel</LabelTable>
+    <LabelField>GeneralID,NodeID</LabelField>
+    <LabelWhere>(NodeID=@NodeID or FirstNodeID=@NodeID) and inputer='{ZL:GetuserName()/}' and status in(99,0)</LabelWhere>
+    <LabelOrder />
+    <LabelContent>&lt;li&gt;&lt;a href="/user/Content/AddContent?ID={Field="GeneralID"/}"&gt;&lt;i class="zi zi_fileLine"&gt;&lt;/i&gt; 维护个人教师档案 &lt;small&gt;&lt;i class="zi zi_pathRight"&gt;&lt;/i&gt;&lt;/small&gt;&lt;/a&gt;&lt;/li&gt;</LabelContent>
+    <LabelCount>1</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>1</IsOpen>
+    <FalseContent />
+    <EmptyContent>&lt;li&gt;&lt;a href="/user/Content/AddContent?NodeID=37&amp;ModelID=53" class="text-danger"&gt;&lt;i class="zi zi_bulb" zico="灯泡"&gt;&lt;/i&gt; 信息不完整-请维护信息才能使用完整的功能 &lt;small&gt;&lt;i class="zi zi_pathRight"&gt;&lt;/i&gt;&lt;/small&gt;&lt;/a&gt;&lt;/li&gt;
+</EmptyContent>
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_CommonModel","tb_s":""}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Content_Add.aspx.cs" Inherits="Extend_Common_Content_Add" ClientIDMode="Static" ValidateRequest="false" %>

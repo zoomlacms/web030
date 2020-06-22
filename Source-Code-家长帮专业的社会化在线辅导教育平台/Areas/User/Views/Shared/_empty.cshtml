@@ -1,0 +1,16 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+<!DOCTYPE html>
+<html>
+<head>
+@Html.Partial("_layout_assets")
+<link href="/App_Themes/V4user.css?version=@(ZoomLa.BLL.BLLCommon.Version_JS)" rel="stylesheet"/>
+<link href="/Template/Gredu/style/global.css?Version=20180312" rel="stylesheet"/>
+<link rel="stylesheet" href="/dist/css/weui.min.css">
+
+@RenderSection("head")
+</head>
+<body>
+@RenderSection("content")
+@RenderSection("script")
+</body>
+</html>

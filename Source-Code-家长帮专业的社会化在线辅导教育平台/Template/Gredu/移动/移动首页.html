@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="msapplication-TileColor" content="#1A0066"/>
+<meta name="msapplication-TileImage" content="/images/win8_symbol_140x140.png"/>
+<title>{$SiteName/}_首页</title>
+{$MetaKeywords/}
+{$MetaDescription/}
+{ZL:Boot4()/}
+<link href="{$CssDir/}global.css?v={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<link rel="stylesheet" href="/dist/css/swiper.min.css">
+<script src="/dist/js/swiper.min.js"></script>
+<script src="/JS/Controls/B_User.js"></script>
+<!--<script src="/JS/Mobile/vconsole.min.js"></script>-->
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="/JS/Modal/APIResult.js"></script>
+<script src="/Extend/assets/extend.js?v={ZL.Label id="前端样式版本号"/}"></script>
+<script>$(function () { wxHelper.init(); })</script>
+{ZL:GetCSS(1,0)/}
+</head>
+<body class="home_body">
+<header  class="mhome_top">
+ <!-- Swiper -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="{$CssDir/}Images/banner_bg06.jpg" alt="家教56"><div class="home_body_mask"><strong>全民学习大派送</strong></div> </div>
+      <div class="swiper-slide"><img src="{$CssDir/}Images/banner_bg05.jpg" alt=""><div class="home_body_mask"><strong class="color2">书山有路勤为径，学海无涯苦作舟</strong></div></div>
+      <div class="swiper-slide"><img src="{$CssDir/}Images/banner_bg07.jpg" alt=""></div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+  
+  <div class="reg_link"><a href="javasrcipt:;"  id="dropdownMenuLink" data-toggle="dropdown" ><i class="zi zi_pluscircle"></i></a>
+       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+		<a class="dropdown-item" href="/User/Login">登录</a>
+		<a class="dropdown-item" href="/User/Register?ParentUserID=0" id="home_reg">注册</a>
+	  </div>
+  </div>
+</header>
+<!--header end-->
+
+
+<section class="container mhome_case">
+<div class="case_img"><img src="{$CssDir/}Images/phome_brand3.png" alt="活动"></div>
+</section>
+<!--case end-->
+
+<section class="mhome_tabs">
+<ul class="nav nav-tabs mhome_tabs_ul" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><label>数学</label> </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><label>语文</label></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><label>英语</label></a>
+  </li>
+</ul>
+<div class="tab-content mhome_tabs_warp" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <ul>
+  {ZL.Label id="输出首页推荐店家老师列表" UserID="{$GetRequest(d)$}" ConShow="30" ShowNum="10" /}
+  {ZL.Label id="输出首页老师列表" UserID="{$GetRequest(d)$}" ConShow="30" ShowNum="10" /}
+  </ul>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <ul>{ZL.Label id="输出首页教师列表" ShowNum="10" NodeID="8" TitleNum="30" ConNum="60" /}</ul>
+  </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+    <ul>{ZL.Label id="输出首页教师列表" ShowNum="10" NodeID="6" TitleNum="30" ConNum="60" /}</ul>
+  </div>
+</div>
+</section>
+<!--tabs end-->
+
+
+
+<section class="mhome_footer">
+<ul>
+<li class="menu1"><a id="user_link" href="{ZL:GetNodeLinkUrl(34)/}?"><i class="zi zi_home"></i><label>首页</label></a></li>
+<!--<li class="menu3"><a id="user_mingshi" href="{ZL:GetProposeinfo(34)/}"><i class="zi zi_bookopen"></i><label>名师</label></a></li>-->
+<li class="menu3"><a id="user_mingshi" href="/extend/ms.aspx"><i class="zi zi_bookopen"></i><label>名师</label></a></li>
+<li class="menu2"><a href="/PClass?id=22"><i class="zi zi_chalkboard"></i><label>讨论</label></a></li>
+<li class="menu4"><a href="/user"><i class="zi zi_useralt"></i><label>我</label></a></li>
+</ul>
+</section>
+<!--footer end-->
+
+
+<!--<div class="modal fade" id="mode1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">提示</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       您好，请先登录！
+      </div>
+      <div class="modal-footer">
+        <a href="/user" class="btn btn-success"><i class="zi zi_arrowRight"></i> 前往登录</a>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+</body>
+  <script type="text/javascript">
+    //Swiper插件 
+	var swiper = new Swiper('.swiper-container', {
+	pagination: {
+	el: '.swiper-pagination',
+	},
+	autoplay:true,
+	});
+
+	$(function(){
+	$(".menu1").addClass("active");
+	})
+
+	//非移动下跳转到指定URL
+	var ua = navigator.userAgent.toLowerCase();
+	var isWeixin = ua.indexOf('micromessenger') != -1;
+	var isAndroid = ua.indexOf('android') != -1;
+	var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+	var gid=parseInt(3);
+	if(!isIos&&!isAndroid&&!isWeixin&&gid==3){
+		window.location.href="/";
+	}
+	
+	if("{$GetRequest(d)$}"){
+	    $("#home_reg").attr("href","/User/Register?ParentUserID={$GetRequest(d)$}")
+	}
+	else{
+		$("#home_reg").attr("href","/User/Register?ParentUserID=1")
+	}
+	
+	
+	var buser = new B_User();//会员ajax登录状态需要结合JS/Controls/B_User.js引用同步生效
+	buser.IsLogged(function(data,flag){
+		if(flag){
+			data=JSON.parse(data);
+		}
+		else{
+			//$('#mode1').modal('show')
+		}
+	});
+
+	function LogoutFun(){
+		buser.Logout(function(){location=location;});
+	}
+    
+	/*链接跳转*/
+	$(function(){
+	if("{$GetRequest(d)$}"){
+	}else{
+			window.location.href = "/Class_34/Default.aspx?d={ZL:GetuserID()/}";
+	}
+	})
+
+	
+  </script>
+</html>

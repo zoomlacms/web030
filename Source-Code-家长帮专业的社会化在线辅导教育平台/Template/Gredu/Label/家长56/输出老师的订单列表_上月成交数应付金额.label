@@ -1,0 +1,44 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>401</LabelID>
+    <LabelName>输出老师的订单列表_上月成交数应付金额</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>ShowNum,10,1,显示个数</LabelParam>
+    <LabelTable>ZL_Pub_dsmx</LabelTable>
+    <LabelField>count(id) as nums</LabelField>
+    <LabelWhere> ZL_Pub_dsmx.spfbrid={ZL:GetuserID()/} and  status_order=99 and
+datediff(Month,PubAddTime,getdate())=1</LabelWhere>
+    <LabelOrder />
+    <LabelContent>
+{Repeate}
+&lt;div class="p-2"&gt;
+共交成{Field="nums"/}单，应结付平台金额：{ZL:JSQ({Field="nums"/}*10,2)/} 
+&lt;form id="form" name="form" method="post" class="float-right" action="/Cart/FastOrder.aspx" &gt;
+&lt;p hidden&gt;
+商品名称&lt;input type="text" value="{ZL:GetuserName()/}的月付订单" id="Proname" name="Proname"/&gt;
+商品价格&lt;input type="text" value="{ZL:JSQ({Field="nums"/}*10,2)/}" id="Price" name="Price" onKeyUp="value=value.replace(/[^\d\.]/g,'')" /&gt;
+商品数量&lt;input type="text" value="1" id="Pronum" name="Pronum" onKeyUp="value=value.replace(/[^\d\.]/g,'')"  /&gt;&lt;/p&gt;
+&lt;input type="submit" name="button" id="button" class="btn btn-outline-danger btn-sm" value="支付平台佣金" /&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_Pub_dsmx","tb_s":""}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="msapplication-TileColor" content="#1A0066"/>
+<meta name="msapplication-TileImage" content="/images/win8_symbol_140x140.png"/>
+<title>讨论_{$SiteTitle/}</title>
+{$MetaKeywords/}
+{$MetaDescription/}
+{ZL:Boot4()/}
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+{ZL:GetCSS(1,0)/}
+</head>
+<body>
+<div class="addcontent_top"><a href="javascript:history.back(-1)"><i class="zi zi_arrowLeft"></i></a> <small id="add_title">讨论社区</small></div>
+
+
+
+<div class="mTop">
+<strong>家长56讨论社区</strong>
+</div>
+
+
+<div class="container mBBS">
+<ul>
+{ZL.Label id="输出评论列表" ShowNum="10" TitleNum="35" NodeID="35" ConNum="100" /}
+</ul>
+</div>
+<!--list end-->
+
+{ZL.Label id="移动端底部"/}
+</body>
+<script>
+$(function(){
+$(".menu2").addClass("active");
+})
+</script>
+</html>

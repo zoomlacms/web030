@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>403</LabelID>
+    <LabelName>会员中心-店家申请识别</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>UID,,1,用户ID</LabelParam>
+    <LabelTable>ZL_User</LabelTable>
+    <LabelField>PageId</LabelField>
+    <LabelWhere> ZL_User.UserID=@UID</LabelWhere>
+    <LabelOrder />
+    <LabelContent>&lt;li&gt;&lt;a href="/Extend/Store/Default.aspx"&gt;&lt;i class="zi zi_storealt"&gt;&lt;/i&gt; 管理店铺 &lt;small&gt;&lt;i class="zi zi_pathRight"&gt;&lt;/i&gt;&lt;/small&gt;&lt;/a&gt;&lt;/li&gt;
+</LabelContent>
+    <LabelCount>1</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>大于</setroot>
+    <Modelvalue>0</Modelvalue>
+    <Valueroot>{Field="PageId"/}</Valueroot>
+    <IsOpen>1</IsOpen>
+    <FalseContent>&lt;li&gt;&lt;a href="/Extend/Common/Store.aspx"&gt;&lt;i class="zi zi_storealt"&gt;&lt;/i&gt; 申请成为店家 &lt;small&gt;&lt;i class="zi zi_pathRight"&gt;&lt;/i&gt;&lt;/small&gt;&lt;/a&gt;&lt;/li&gt;
+</FalseContent>
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_User","tb_s":""}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

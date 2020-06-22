@@ -1,0 +1,44 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>331</LabelID>
+    <LabelName>移动端底部</LabelName>
+    <LabelType>1</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam />
+    <LabelTable />
+    <LabelField />
+    <LabelWhere />
+    <LabelOrder />
+    <LabelContent>&lt;section class="mhome_footer  d-block  d-sm-none" style="z-index: 999;"&gt;
+    &lt;ul&gt;
+        &lt;li id="tab_home"&gt;&lt;a href="/Class_34/Default.aspx"&gt;&lt;i class="zi zi_home"&gt;&lt;/i&gt;
+            &lt;label&gt;首页&lt;/label&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li id="tab_ms"&gt;&lt;a href="/extend/ms.aspx"&gt;&lt;i class="zi zi_bookopen"&gt;&lt;/i&gt;
+            &lt;label&gt;名师&lt;/label&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li id="tab_bar"&gt;&lt;a href="/PClass?id=22"&gt;&lt;i class="zi zi_chalkboard"&gt;&lt;/i&gt;
+            &lt;label&gt;讨论&lt;/label&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li id="tab_me" style="position:relative;" class="active"&gt;&lt;a href="/User/"&gt;&lt;i class="zi zi_useralt"&gt;&lt;/i&gt;
+            &lt;label&gt;我&lt;/label&gt;
+            &lt;span class="tip" id="tip_me"&gt;&lt;/span&gt;
+        &lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/section&gt;</LabelContent>
+    <LabelCount />
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType />
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

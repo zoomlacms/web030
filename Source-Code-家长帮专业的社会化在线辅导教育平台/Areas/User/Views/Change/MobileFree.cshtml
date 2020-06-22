@@ -1,0 +1,66 @@
+﻿@using ZoomLa.Model;
+@using ZoomLa.Model.User;
+@using ZoomLa.SQLDAL;
+@{
+
+    M_UserInfo mu = ViewBag.mu;
+    M_Uinfo basemu = ViewBag.basemu;
+    int step = DataConvert.CLng(ViewBag.step);
+}
+@section head{<title>修改手机</title>}
+@section content{
+<style>#u_ban{display: none;}</style>
+<div class="addcontent_top"><a href="javascript:history.back(-1)"><i class="zi zi_arrowLeft"></i></a> <small id="add_title">手机设置</small></div>
+
+
+<div id="pageflag" data-nav="group" data-ban="ChangeMP"></div>
+<div class="container" hidden>
+<nav aria-label="breadcrumb" role="navigation">
+<ol class="breadcrumb">
+	<li class="breadcrumb-item"><a title="会员中心" href="/User/Default">会员中心</a></li>
+	<li class="breadcrumb-item"><a title="用户信息" href="/User/Info/UserInfo">用户信息</a></li>
+	<li class="breadcrumb-item active">修改手机</li>
+</ol>
+</nav>
+</div>
+
+
+<div class="container btn_green">
+    <form method="post" action="/User/Change/Mobile_free" id="form1">
+        <table class="table">
+            <tr>
+                <td class="td_m">原手机：</td>
+                <td>
+                    <input type="text" class="form-control text_300" id="SMobile_T" disabled="disabled" value="@basemu.Mobile" />
+                </td>
+            </tr>
+            <tr>
+                <td>新手机：</td>
+                <td>
+                    <input type="text" class="form-control text_300 required mobile" id="NewMobile_T" name="NewMobile_T" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" id="Next_Btn" value="确认修改" class="btn btn-success" />
+                </td>
+            </tr>
+        </table>
+        @if (!string.IsNullOrEmpty(ViewBag.info))
+        {
+            <div class="alert alert-warning">@ViewBag.info</div>
+        }
+    </form>
+</div>
+
+}
+@section script{
+<script>
+    $("#form1").validate();
+	
+	$(function(){
+	$(".menu4").addClass("active");
+	})
+</script>
+}

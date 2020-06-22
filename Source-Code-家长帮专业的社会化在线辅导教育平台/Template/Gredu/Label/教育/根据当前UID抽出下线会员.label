@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>402</LabelID>
+    <LabelName>根据当前UID抽出下线会员</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>教育</LabelCate>
+    <LabelDesc />
+    <LabelParam>ParentUserID,,1,当前用户ID|Order,asc$desc,3,排序规则|ShowNum,10,1,调用信息数</LabelParam>
+    <LabelTable>ZL_User</LabelTable>
+    <LabelField>RegTime,UserName</LabelField>
+    <LabelWhere> ZL_User.ParentUserID=@ParentUserID</LabelWhere>
+    <LabelOrder>RegTime @Order</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;li&gt;{Field="UserName"/}&lt;small&gt;&lt;i class="zi zi_userclock"&gt;&lt;/i&gt; {ZL:FormatDate({Field="RegTime"/},yyyy-MM-dd)/}&lt;/small&gt;&lt;/li&gt;
+{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>1</IsOpen>
+    <FalseContent />
+    <EmptyContent>暂无下线</EmptyContent>
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_User","tb_s":""}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

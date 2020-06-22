@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<title>选择老师_{$SiteName/}</title>
+{ZL:Boot4()/}
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<script src="/JS/Controls/B_User.js"></script>
+{ZL:GetCSS(1,0)/}
+</head>
+<body>
+<section class="container Parents_top">
+<div class="row">
+<div class="col-12 Parents_top_l">
+<a href="#"><i class="zi zi_digg zi_3x"></i></a>
+<a href="#">选取老师推荐到主页</a><a href="/User/Content/MyFavori?type=1">管理推荐名单</a>
+</div>
+</div>
+</section>
+<!--top end-->
+
+<div class="container user_list_ul">
+<ul>
+{ZL.Label id="老师列表_收藏推荐" NodeID="37" ShowNum="100" order="desc" /}
+</ul>
+</div>
+
+
+<section class="mhome_footer">
+<ul>
+<li class="menu1"><a id="user_link" href="{ZL:GetNodeLinkUrl(34)/}?"><i class="zi zi_home"></i><label>首页</label></a></li>
+<li class="menu3"><a id="user_mingshi" href="{ZL:GetProposeinfo(34)/}"><i class="zi zi_bookopen"></i><label>名师</label></a></li>
+<li class="menu2"><a href="/PClass?id=22"><i class="zi zi_chalkboard"></i><label>讨论</label></a></li>
+<li class="menu4"><a href="/user"><i class="zi zi_useralt"></i><label>我</label></a></li>
+</ul>
+</section>
+<!--footer end-->
+
+</body>
+</html>

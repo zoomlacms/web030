@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>388</LabelID>
+    <LabelName>获取一个商圈的老师的个数</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>sq,,1,商圈</LabelParam>
+    <LabelTable>ZL_CommonModel LEFT JOIN ZL_C_lssq ON ZL_CommonModel.ItemID=ZL_C_lssq.ID</LabelTable>
+    <LabelField>COUNT(*) as num</LabelField>
+    <LabelWhere>( NodeID=37 OR FirstNodeID=37)  And ZL_CommonModel.Status=99 and qu!='' and  sq like '%@sq%'</LabelWhere>
+    <LabelOrder />
+    <LabelContent>&lt;small&gt; {Field="num"/}&lt;/small&gt;</LabelContent>
+    <LabelCount>1</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_CommonModel","tb_s":"ZL_C_lssq"}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

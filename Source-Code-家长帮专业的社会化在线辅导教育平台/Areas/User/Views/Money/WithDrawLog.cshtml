@@ -1,0 +1,20 @@
+﻿@model ZoomLa.SQLDAL.SQL.PageSetting
+@{
+    
+}
+@section head{
+ <script src="/JS/DatePicker/WdatePicker.js"></script>
+    <title>提现日志</title>
+}
+@section content{
+<div class="addcontent_top"><a href="/User/"><i class="zi zi_arrowLeft"></i></a> <small id="add_title">提现记录</small></div>
+<div style="height:5px;"></div>
+@Html.Partial("WithDrawLog_List",Model)
+}
+@section script{
+<style>.allchk_l{display:none; }</style>
+<script src="/JS/Controls/ZL_Dialog.js"></script>
+<script>
+ 
+</script>
+}

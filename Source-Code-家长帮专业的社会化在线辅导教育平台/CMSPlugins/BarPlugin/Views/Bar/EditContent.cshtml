@@ -1,0 +1,105 @@
+﻿@using ZoomLa.Model
+@using ZoomLa.BLL.Message
+@using ZoomLa.BLL.Helper
+@using ZoomLa.Common
+@model ZoomLa.Model.Message.M_Guest_Bar
+@{
+    M_UserInfo mu = new ZoomLa.BLL.B_User().GetLogin();
+    M_GuestBookCate cateMod = ViewBag.cateMod;
+    Layout = "_PostBar.cshtml";
+    B_Guest_BarAuth auth = new B_Guest_BarAuth();
+    int id = DataConverter.CLng(Request.QueryString["id"]);
+    if (id < 1 && !auth.AuthCheck(cateMod, mu, "send")) { function.WriteErrMsg("当前用户无发贴权限"); }
+}
+@section head{
+<title>@(Call.SiteName)贴吧</title>
+<script src="/Plugins/Ueditor/bar.config.js"></script>
+<script src="/Plugins/Ueditor/ueditor.all.min.js"></script>
+
+}
+@section content{
+<style>
+.forum_navBox{display: none;}.forum_bottom{display: none;}.editcon_top{margin-bottom: 3.5rem;}.card-footer>a{display: none;}
+</style>
+<div class="addcontent_top"><a href="javascript:history.back(-1)"><i class="zi zi_arrowLeft"></i></a> <small id="add_title">评论社区</small></div>
+
+<div class="container editcon_top">
+<form method="post" action="@MVCHelper.GetAction("/Bar/Post_Add", Request, "rurl=/PItem?id=" + (Model.Pid == 0 ? Model.ID : Model.Pid))">
+
+
+		@{
+			string key = "editcontent";//每个页面给予不同的标识
+			string randomcode = "123456";//可不修改
+			if (ZoomLa.AppCode.Verify.CMSCodeVerify.CodeDic.ContainsKey(key)) { ZoomLa.AppCode.Verify.CMSCodeVerify.CodeDic[key] = randomcode.ToLower(); }
+			else { ZoomLa.AppCode.Verify.CMSCodeVerify.CodeDic.Add(key, randomcode.ToLower()); }
+
+			}
+
+
+<input type="text" id="VCode" name="VCode" placeholder="验证码" maxlength="6" class="form-control text_x" style="display:none;" autocomplete="off" value="@randomcode"/>
+<input type="hidden" id="VCode_hid" name="VCode_hid" value="@key" style="display:none;" />
+
+
+
+
+<div id="send_div">
+<div class="post_editTitle">
+	<span class="pull-left">  
+		@if (Model.ID > 1){<span>编辑贴子</span>}
+		else{<span><i class="zi zi_fileelt" aria-hidden="true"></i> 发表新贴</span>}
+		<a href="/PItem?id=@(Model.Pid==0?Model.ID:Model.Pid)"><span>@Model.Title</span>  </a>  
+	</span>
+	<span class="float-right"><a href="/PClass?id=@cateMod.CateID"><i class='zi zi_circleLeftBold'></i> 返回[@(cateMod.CateName)]列表</a></span> 
+
+</div>
+@if (Model.Pid == 0){<div><input type="text" id="MsgTitle_T" name="MsgTitle_T" data-type="normal" class="form-control" value="@Model.Title" /></div>} 
+@if (DeviceHelper.GetAgent() == DeviceHelper.Agent.PC)
+{
+    <div style="padding: 5px 0 5px 0;"><textarea ID="MsgContent_T" name="MsgContent_T" data-type="normal" style="height:14rem;width:100%;" placeholder="说点什么吧...">@Model.MsgContent</textarea></div>
+    <div id="SendDiv">
+        @if (Model.ID == 0)
+        {
+ 
+        }
+        <div style="height:20px;"></div>
+        <div id="bar_editBtn" class="navbar-fixed-bottom">
+            <div class="container text-center">
+                <input type="submit" value="发布主题" onclick="return CheckData();" class="btn btn-info" />
+                <input type="button" id="DelMsg_Btn" value="删除主题" onclick="return confirm('确定要删除吗');" class="btn btn-danger" />
+                <input type="reset" value="重置主题" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+    @MvcHtmlString.Create(Call.GetUEditor("MsgContent_T", 4))
+}
+else
+{
+    <link href="/dist/css/weui.min.css" rel="stylesheet" />
+    <script src="/dist/js/weui.js"></script>
+    @Html.Partial("Comp/MBEditor", new ZoomLa.AppCode.Controls.C_MBEditor() { ShowVCode = false, Title = "贴子内容",ValueControlId= "MsgContent_T" })
+}
+</div>
+</form>
+</div>
+}
+@section script{
+
+<script>
+
+function CheckData() {
+    var msg = UE.getEditor("MsgContent_T").getContent();;
+    if ($("#MsgTitle_T").val() == "") { alert("贴子标题不能为空!"); return false; }
+    if (msg.replace(" ", "") == "") { alert("内容不能为空"); return false; }
+
+    return true;
+}
+function GetSource() { return "@Html.Raw(Request.RawUrl)"; }
+//删除帖子
+function PostDelMsg(msgid) {
+
+if (confirm("确定要删除该条信息吗!!")) { 
+	PostToCS("DeleteMsg", msgid, function (data) { if (data == "failed") alert("删除失败,当前用户无权限!"); });
+}
+} 
+</script>
+}

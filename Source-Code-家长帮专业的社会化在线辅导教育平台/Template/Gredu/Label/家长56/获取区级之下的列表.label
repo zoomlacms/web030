@@ -1,0 +1,34 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>386</LabelID>
+    <LabelName>获取区级之下的列表</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>ShowNum,10,1,显示个数|quid,1,1,区级ID</LabelParam>
+    <LabelTable>EX_VIEW_SQ</LabelTable>
+    <LabelField>sq</LabelField>
+    <LabelWhere>quid=@quid  And Status=99</LabelWhere>
+    <LabelOrder>CreateTime DESC</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;li&gt;&lt;a href="{ZL:GetLastinfo(34)/}?xiao={$GetRequest(xiao)$}&amp;kecheng={$GetRequest(kecheng)$}&amp;sq={Field="sq"/}"&gt;{Field="sq"/}
+{ZL.Label id="获取一个商圈的老师的个数" sq="{Field="sq"/}" /}&lt;/a&gt;&lt;/li&gt;
+{/Repeate} </LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"EX_VIEW_SQ","tb_s":""}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

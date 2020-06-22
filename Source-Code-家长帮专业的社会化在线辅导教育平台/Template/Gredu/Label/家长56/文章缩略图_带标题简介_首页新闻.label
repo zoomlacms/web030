@@ -1,0 +1,48 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>324</LabelID>
+    <LabelName>文章缩略图_带标题简介_首页新闻</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>NodeID,0,1,节点ID|TitleNum,30,1,标题长度|ShowNum,10,1,调用信息数|synNum,100,1,简介数</LabelParam>
+    <LabelTable>ZL_CommonModel LEFT JOIN ZL_C_Article ON ZL_CommonModel.ItemID=ZL_C_Article.ID</LabelTable>
+    <LabelField>ZL_CommonModel.TagKey,ZL_CommonModel.CreateTime,ZL_CommonModel.GeneralID,ZL_CommonModel.Hits,ZL_CommonModel.NodeID,ZL_CommonModel.Title,ZL_CommonModel.TitleStyle,ZL_CommonModel.TopImg,ZL_C_Article.synopsis</LabelField>
+    <LabelWhere>(NodeID=@NodeID or FirstNodeID=@NodeID) And status=99</LabelWhere>
+    <LabelOrder>CreateTime DESC</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;li&gt;
+&lt;div class="item_l"&gt;
+&lt;div class="date"&gt;&lt;span&gt;{ZL:FormatDate({Field="CreateTime"/},dd)/}&lt;/span&gt;{ZL:FormatDate({Field="CreateTime"/},yyyy-MM)/}&lt;/div&gt;
+&lt;div class="image"&gt;&lt;a href="{ZL:GetInfoUrl({Field="GeneralID"/})/}"&gt;&lt;img src="{Field="TopImg"/}"  alt="{Field="Title"/}" onerror="javascript:this.src='/UploadFiles/nopic.svg';"&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="item_r"&gt;
+&lt;a href="" class="content_title"&gt;
+{Field="Title"/}
+&lt;/a&gt;
+&lt;div class="content_c"&gt;
+{ZL:CutText({Field="synopsis"/},@synNum,)/}
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+&lt;/li&gt;
+{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_CommonModel","tb_s":"ZL_C_Article"}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam>{"PureT1":"ZL_CommonModel","PureT2":"ZL_C_Article","T1":"ZoomlaCMS.dbo.ZL_CommonModel","T2":"ZoomlaCMS.dbo.ZL_C_Article","JoinType":"left join","OnField1":"ItemID","OnField2":"ID"}</ProceParam>
+  </Table>
+</NewDataSet>

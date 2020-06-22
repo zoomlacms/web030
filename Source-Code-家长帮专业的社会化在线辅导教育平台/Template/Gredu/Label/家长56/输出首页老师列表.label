@@ -1,0 +1,48 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>375</LabelID>
+    <LabelName>输出首页老师列表</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>UserID,1,1,用户ID|ConShow,30,1,内容长度|ShowNum,10,1,显示个数</LabelParam>
+    <LabelTable>ZL_C_lssq LEFT JOIN ZL_CommonModel ON ZL_C_lssq.ID=ZL_CommonModel.ItemID</LabelTable>
+    <LabelField>jxfw,jxms,GeneralID,NodeID,Title,tx,dbo.ZL_StripeTrimstr(jxtd) as con</LabelField>
+    <LabelWhere>ZL_CommonModel.Status=99 And  ModelID=53 and GeneralID not in (select InfoID from ZL_Favorite where Owner=@UserID) </LabelWhere>
+    <LabelOrder>ZL_CommonModel.CreateTime DESC</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;li&gt;&lt;div class="mhome_tabs_con"&gt;
+&lt;div class="mhome_tabs_con_l"&gt;&lt;a href="{ZL:GetInfoUrl({Field="GeneralID"/})/}?d={$GetRequest(d)$}" class="list_left_{Field="GeneralID"/}"&gt;&lt;/a&gt; 
+&lt;div class="tabs_con_l_r"&gt;&lt;strong&gt;{Field="Title"/}&lt;/strong&gt;&lt;span&gt;{ZL:CutText({Field="con"/},@ConShow,...)/} &lt;/span&gt;&lt;abbr&gt;&lt;small&gt;教学模式：{Field="jxms"/}&lt;/small&gt; &lt;small&gt;教学范围：{Field="jxfw"/}&lt;/small&gt;&lt;/abbr&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="mhome_tabs_con_r"&gt;&lt;a href="{ZL:GetInfoUrl({Field="GeneralID"/})/}?d={$GetRequest(d)$}" class="mbtn_link"&gt;连线老师&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
+  
+  &lt;script&gt;
+      var txStr='{Field="tx"/}';
+      var imgurljson=JSON.parse(txStr==''?'[{\"url\":\"/images/userface/noface.png\"}]':txStr);
+      if(imgurljson&amp;&amp;imgurljson.length>0&amp;&amp;imgurljson[0].url){
+      var imgurl=imgurljson[0].url;
+      $(".list_left_{Field="GeneralID"/}").append("&lt;img src="+imgurl+" onerror='this.onerror=null;this.src='/UploadFiles/nopic.svg''/&gt; ")
+  }else{
+  $(".list_left_{Field="GeneralID"/}").append("&lt;img src='/UploadFiles/nopic.svg'/&gt;");
+  }
+
+  &lt;/script&gt;
+&lt;/li&gt;
+{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_C_lssq","tb_s":"ZL_CommonModel"}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

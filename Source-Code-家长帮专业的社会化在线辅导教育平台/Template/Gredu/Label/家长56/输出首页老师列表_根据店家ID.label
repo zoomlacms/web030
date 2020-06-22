@@ -1,0 +1,48 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>372</LabelID>
+    <LabelName>输出首页老师列表_根据店家ID</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>PuserID,1,1,店家ID|ShowNum,30,1,显示个数|conNum,50,1,内容长度</LabelParam>
+    <LabelTable>ZL_EX_HomeTeaList</LabelTable>
+    <LabelField>GeneralID,Title,tx,jxms,dbo.ZL_StripeTrimstr(jxtd) as con,jl,sksz,jxfw</LabelField>
+    <LabelWhere> ZL_EX_HomeTeaList.Owner=@PuserID</LabelWhere>
+    <LabelOrder>ZL_EX_HomeTeaList.CreateTime DESC</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;li&gt;&lt;div class="mhome_tabs_con"&gt;
+&lt;div class="mhome_tabs_con_l"&gt;&lt;a href="{ZL:GetInfoUrl({Field="GeneralID"/})/}" class="list_left_{Field="GeneralID"/}"&gt;&lt;/a&gt; 
+&lt;div class="tabs_con_l_r"&gt;&lt;strong&gt;{Field="Title"/}&lt;/strong&gt;&lt;span&gt;{ZL:CutText({Field="con"/},@conNum,...)/} &lt;/span&gt;&lt;abbr&gt;&lt;small&gt;教学模式：{Field="jxms"/}&lt;/small&gt; &lt;small&gt;教学范围：{Field="jxfw"/}&lt;/small&gt;&lt;/abbr&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="mhome_tabs_con_r"&gt;&lt;a href="{ZL:GetInfoUrl({Field="GeneralID"/})/}" class="mbtn_link"&gt;连线老师&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
+  
+  &lt;script&gt;
+      var txStr='{Field="tx"/}';
+      var imgurljson=JSON.parse(txStr==''?'[]':txStr);
+      if(imgurljson&amp;&amp;imgurljson.length>0&amp;&amp;imgurljson[0].url){
+      var imgurl=imgurljson[0].url;
+      $(".list_left_{Field="GeneralID"/}").append("&lt;img src="+imgurl+" onerror='this.onerror=null;this.src='/UploadFiles/nopic.svg''/&gt; ")
+  }else{
+  $(".list_left_{Field="GeneralID"/}").append("&lt;img src='/UploadFiles/nopic.svg'/&gt;");
+  }
+
+  &lt;/script&gt;
+&lt;/li&gt;
+{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_EX_HomeTeaList","tb_s":""}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

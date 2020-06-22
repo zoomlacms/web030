@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PubAction.aspx.cs" Inherits="ZoomLaCMS.PubAction" EnableViewStateMac="false" %>

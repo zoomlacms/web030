@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="msapplication-TileColor" content="#1A0066"/>
+<meta name="msapplication-TileImage" content="/images/win8_symbol_140x140.png"/>
+<title>{$SiteName/}_首页</title>
+{$MetaKeywords/}
+{$MetaDescription/}
+{ZL:Boot4()/}
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+{ZL:GetCSS(1,0)/}
+</head>
+<body>
+<header class="mteacher_header">
+<div class="addcontent_top"><a href="javascript:history.back(-1)"><i class="zi zi_arrowLeft"></i></a> <small id="add_title">家长56-老师列表</small></div>
+
+<!--<strong>家长56-小明的店</strong>-->
+
+<section class="job-module"> 
+<dl class="retrie"> 
+<dt class="d-flex">
+	<a class="order-2" id="area" href="javascript:;">年级 </a>
+	<a class="order-3" id="wage" href="javascript:;">课程</a>
+	<a class="order-1" href="{ZL:GetHotinfo(34)/}">位置 </a>
+</dt> 
+<dd class="area"> 
+	<ul class="slide downlist" id="tea_n"> 
+		<li><a href="{ZL:GetLastinfo(34)/}?nj=小学&kc={$GetRequest(kc)$}" value="小学">小学</a></li> 
+		<li><a href="{ZL:GetLastinfo(34)/}?nj=初中&kc={$GetRequest(kc)$}" value="初中">初中</a></li> 
+		<li><a href="{ZL:GetLastinfo(34)/}?nj=高中&kc={$GetRequest(kc)$}" value="高中">高中</a></li> 
+	</ul> 
+</dd> 
+<dd class="wage"> 
+	<ul class="slide downlist" id="tea_kecheng"> 
+		<li><a href="{ZL:GetLastinfo(34)/}?kc=语文&nj={$GetRequest(nj)$}">语文</a></li> 
+		<li><a href="{ZL:GetLastinfo(34)/}?kc=数学&nj={$GetRequest(nj)$}">数学</a></li> 
+		<li><a href="{ZL:GetLastinfo(34)/}?kc=外语&nj={$GetRequest(nj)$}">外语</a></li> 
+		<li><a href="{ZL:GetLastinfo(34)/}?kc=物理&nj={$GetRequest(nj)$}">物理</a></li> 
+		<li><a href="{ZL:GetLastinfo(34)/}?kc=化学&nj={$GetRequest(nj)$}">化学</a></li> 
+		<li><a href="{ZL:GetLastinfo(34)/}?kc=历史&nj={$GetRequest(nj)$}">历史</a></li> 
+		<li><a href="{ZL:GetLastinfo(34)/}?kc=地理&nj={$GetRequest(nj)$}">地理</a></li> 
+		<li><a href="{ZL:GetLastinfo(34)/}?kc=生物&nj={$GetRequest(nj)$}">生物</a></li> 
+		<li><a href="{ZL:GetLastinfo(34)/}?kc=政治&nj={$GetRequest(nj)$}">政治</a></li> 
+	</ul> 
+</dd> 
+</dl> 
+</section> 
+</header>
+<!--header end-->
+
+
+
+<section class="mteacher_list">
+<!--{ZL.Label id="输出教师列表_分页" ShowNum="10" NodeID="37" TitleNum="30" ConNum="80" Area="{$GetUrldecode({$GetRequest(Area)$})$}" nj="{$GetUrldecode({$GetRequest(nj)$})$}" kc="{$GetUrldecode({$GetRequest(kc)$})$}" /}-->
+<!--{ZL.Label id="输出教师列表" ShowNum="10" NodeID="3" TitleNum="30" ConNum="80" /}-->
+<ul id="teas_list">
+
+</ul>
+</section>
+<!--list end-->
+
+
+{ZL.Label id="移动端底部"/}
+<script src="/JS/Modal/APIResult.js"></script>
+<script>
+$(function(){
+$(".menu3").addClass("active");
+
+/*判断为空的时候*/
+// if($(".mteacher_list  .list_left").html()==""){
+// $(".mteacher_list  .list_left").html("<img src='/UploadFiles/nopic.svg'/>")
+// }
+// 
+})
+
+var lat;
+var lng;
+
+$(function(){ 
+	$('.retrie dt a').click(function(){
+		var $t=$(this);
+		if($t.hasClass('up')){
+			$(".retrie dt a").removeClass('up');
+			$('.downlist').hide();
+			$('.mask').hide();
+		}else{
+			$(".retrie dt a").removeClass('up');
+			$('.downlist').hide();
+			$t.addClass('up');
+			$('.downlist').eq($(".retrie dt a").index($(this)[0])).show();//让一个元素显示出来  
+			$('.mask').show();
+		}
+	});
+	$(".area ul li a:contains('"+$('#area').text()+"')").addClass('selected');
+	$(".wage ul li a:contains('"+$('#wage').text()+"')").addClass('selected');
+	
+	 //获取URL传值
+	var cases="{$GetRequest(cases)$}";
+	if(cases==""){
+	  if({ZL.Label id="获取当前用户会员组" /}==3){
+		var zuobiao="{ZL.Label id="获取家长的坐标" /}".split(",");
+		  //alert(zuobiao[0] + zuobiao[1])  
+		  lat=zuobiao[0];
+		  lng=zuobiao[1];
+		}
+		if({ZL.Label id="获取当前用户会员组" /}==4){
+		 var zuobiao="{ZL.Label id="获取老师的坐标" /}".split(",");
+		  //alert(zuobiao[0] + zuobiao[1])  
+		  lat=zuobiao[0];
+		  lng=zuobiao[1];
+		}
+		if({ZL.Label id="获取当前用户会员组" /}==2){
+		 var zuobiao="{ZL.Label id="获取店家的坐标" /}".split(",");
+		  //alert(zuobiao[0] + zuobiao[1])  
+		  lat=zuobiao[0];
+		  lng=zuobiao[1];
+		}
+    }
+	else{
+	  var caselist=cases.split(",");
+      lat=caselist[0];
+	  lng=caselist[1];
+	//alert(caselist[0])
+	}
+	
+
+$.post("/Extend/API.ashx?action=near",{lat:lat,lng:lng},function(data){
+   var model=APIResult.getModel(data);
+   if(APIResult.isok(model)){
+     console.log(model.result);
+   //console.log(model.result[0].GeneralID);
+   //获取Json数据
+   var json=model.result;
+   $.each(json,function(index,value){
+   
+   //给UL添加数据
+   //获取图片地址
+   var imgurl;
+    var imgurljson=JSON.parse(value.tx);//转换格式
+	  if(imgurljson){
+		imgurl=imgurljson[0].url;
+	  }else{
+	    imgurl='/UploadFiles/nopic.svg';
+	  }
+	  console.log(imgurljson[0].url)
+   
+   $("#teas_list").append('<li><a href="/Item/'+value.GeneralID+'.aspx"><div class="list_left"><img src='+imgurl+'></div> <div class="list_right"><strong>'+value.Title+'</strong><abbr class="abbr_p"><small>授课时长'+value.sksz+'</small> | <small>'+value.jl+'</small> </abbr><abbr class="abbr_b"><small>教学范围：'+value.jxfw+'</small> | <small>授课模式：'+value.jxdd+'</small></abbr><abbr class="abbr_p"><small>'+value.xxdz+'</small> | <small>'+value.gddd+'</small> | <small>'+value.sq+'</small></abbr></div></a></li>');
+   });
+
+   }
+   else{alert(model.retmsg);}
+})
+});
+</script>
+</body>
+</html>

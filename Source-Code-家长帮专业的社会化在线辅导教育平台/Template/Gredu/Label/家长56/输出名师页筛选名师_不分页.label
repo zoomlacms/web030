@@ -1,0 +1,45 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>387</LabelID>
+    <LabelName>输出名师页筛选名师_不分页</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>ShowNum,10,1,显示个数|sq,,1,商圈|xiao,,1,年级|kecheng,,1,课程</LabelParam>
+    <LabelTable>ZL_CommonModel LEFT JOIN ZL_C_lssq ON ZL_CommonModel.ItemID=ZL_C_lssq.ID</LabelTable>
+    <LabelField>GeneralID,NodeID,Title,jl,jxfw,jxms,xxdz,gddd,jzxx,tx,sq,qu</LabelField>
+    <LabelWhere>ModelID=53 And Status=99 and sq like '%@sq%' and jxfw like '%@xiao%' and jxfw like '%@kecheng%'</LabelWhere>
+    <LabelOrder>ZL_CommonModel.CreateTime DESC</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;li&gt;&lt;a href="{ZL:GetInfoUrl({Field="GeneralID"/})/}?d={$GetRequest(d)$}"&gt;&lt;div class="list_left list_left_{Field="GeneralID"/}"&gt;&lt;/div&gt;
+  &lt;div class="list_right"&gt;&lt;strong&gt;{Field="Title"/}&lt;/strong&gt;&lt;abbr class="abbr_p"&gt;&lt;small&gt;授课时{Field="sksz"/}个小时&lt;/small&gt; | &lt;small&gt;{Field="jl"/}教龄&lt;/small&gt; | &lt;small&gt;{Field="jzxx"/}名师&lt;/small&gt; &lt;/abbr&gt;&lt;abbr class="abbr_b"&gt;&lt;small&gt;{Field="jxfw"/}&lt;/small&gt; | &lt;small&gt;{Field="jxms"/}&lt;/small&gt;&lt;/abbr&gt;&lt;abbr class="abbr_p"&gt;&lt;small&gt;{Field="xxdz"/}&lt;/small&gt; | &lt;small&gt; {Field="qu"/}&lt;/small&gt; | &lt;small&gt;{Field="sq"/}&lt;/small&gt;&lt;/abbr&gt;&lt;/div&gt;&lt;/a&gt;
+
+  &lt;script&gt;
+      var imgurljson={Field="tx"/};
+      if(imgurljson&amp;&amp;imgurljson.length>0&amp;&amp;imgurljson[0].url){
+      var imgurl=imgurljson[0].url;
+      $(".list_left_{Field="GeneralID"/}").append("&lt;img src="+imgurl+" onerror='this.onerror=null;this.src='/UploadFiles/nopic.svg''/&gt; ")
+  }else{
+  $(".list_left_{Field="GeneralID"/}").append("&lt;img src='/UploadFiles/nopic.svg'/&gt;");
+  }
+  &lt;/script&gt;
+&lt;/li&gt;
+{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_CommonModel","tb_s":"ZL_C_lssq"}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

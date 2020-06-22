@@ -1,0 +1,23 @@
+﻿@using System.Data;
+@using ZoomLa.BLL.Helper
+@model ZoomLa.SQLDAL.SQL.PageSetting
+@{
+    Model.cols = 5;
+}
+
+<div id="EGV">
+    <div >
+      
+        @foreach (DataRow dr in Model.dt.Rows)
+        {
+		
+		<div class="message_list">
+		  <span><a href="MessageRead?read=1&id=@dr["msgid"]">标题：@dr["Title"]@dr["ReadUser"]</a> </span>
+		  <div class="message_list_info"><small>发件人:@dr["UserName"]</small></div>
+		  <div class="message_list_time"><small>发送时间：@DateHelper.ToDate(dr["PostDate"])</small><small class="xuanze">勾选：<input type="checkbox" name="idchk" value="@dr["msgid"]" /></small>  </div>
+		</div>
+	
+        }
+          <div class="message_page">  @Html.Partial("_page2", Model)</div>
+    </div>
+</div>

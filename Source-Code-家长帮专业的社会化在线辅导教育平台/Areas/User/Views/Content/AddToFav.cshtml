@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "/Areas/User/Views/Shared/_empty.cshtml";
+}
+@section head{<title>内容收藏</title>}
+@section content{
+ 
+@if (!string.IsNullOrEmpty(ViewBag.err))
+{
+<div class="jumbotron">
+<div class="container">
+  <h1>不正确的收藏！</h1>
+  <p class="lead">@ViewBag.err。</p>
+  <hr class="my-4">
+  <p class="lead">
+    <a class="btn btn-outline-info" href="javascript :;" onClick="javascript :history.back(-1);" role="button">返回上一页</a>
+  </p>
+  </div>
+</div>	
+}
+else
+{
+<div class="jumbotron">
+<div class="container">
+  <h1>推荐成功成功！</h1>
+  <p class="lead">该老师将在成为店家推荐。</p>
+  <hr class="my-4">
+  <p class="lead">
+    <a class="btn btn-outline-info" href="/User/Content/MyFavori?type=1" role="button">管理名单</a>
+  </p>
+  </div>
+</div>
+   <script>
+       window.setTimeout(window.close, 5000);
+    </script>
+}
+    }
+@section script{}

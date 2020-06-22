@@ -1,0 +1,28 @@
+﻿{ZL.Source id="节点栏目信息数据源"/}<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>家长订单_{$SiteName/}</title>
+<meta name="Keywords" content="{SField sid="节点栏目信息数据源" FD="Meta_Keywords" page="0"/}" />
+<meta name="description" content="{SField sid="节点栏目信息数据源" FD="Meta_Description" page="0"/}" />
+{ZL:Boot4()/}
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<script type="text/javascript" src="{$CssDir/}js/server.js"></script>
+</head> 
+<body>
+<div class="addcontent_top"><a href="javascript:history.back(-1)"><i class="zi zi_arrowLeft"></i></a> <small id="add_title">订单列表</small></div>
+
+<section class="cart_list">
+<ul>
+{ZL.Label id="输出家长的订单列表" ShowNum="10" /}
+</ul>
+</section>
+<!--cart end-->
+
+{ZL.Label id="移动端底部"/}
+
+<script>
+$(".menu4").addClass("active");
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+﻿{ZL.Source id="文章模型数据源标签"/}<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{SField sid="文章模型数据源标签" FD="Title" page="0"/}_{$SiteName/}</title>
+<meta name="Keywords" content="{SField sid="文章模型数据源标签" FD="Tagkey" page="0"/}" />
+<meta name="Description" content="{SField sid="文章模型数据源标签" FD="Title" page="0"/}">
+{ZL:Boot4()/}
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<script src="/js/scrolltopcontrol.js" type="text/javascript"></script>
+<script type="text/javascript" src="{$CssDir/}js/server.js"></script>
+<script src="/JS/Controls/B_User.js"></script>
+{ZL:GetCSS(1,0)/}
+<style type="text/css">
+.navbar-default .navbar-nav>#Menu{SField sid="文章模型数据源标签" FD="FirstNodeID" page="0"/}>a, .navbar-default .navbar-nav>#Menu{SField sid="文章模型数据源标签" FD="FirstNodeID" page="0"/}>a:hover, .navbar-default .navbar-nav>#Menu{SField sid="文章模型数据源标签" FD="FirstNodeID" page="0"/}>a:focus { color: #555; background-color: #e7e7e7 }
+.Assis_Div{position:fixed;top:60%; left:50%; margin-left:-650px; }
+.Assis_Div .info {border:1px solid #ccc; color:#999; padding:10px; font-size:20px; display:block; text-decoration:none; text-align:center; width:80px;}
+.gray_c{color:#ccc;}
+.modal-dialog{margin:100px auto;}
+.shop_top { position:relative; z-index:111;}
+.shop_top .navbar-default { background:#FFF;}
+.shop_top .navbar-nav > li:nth-last-child(2) > a,.shop_top .navbar-nav > li:nth-last-child(1) > a { font-size:1em;}
+#home_nav { position: relative;}
+</style>
+</head>
+<body>
+<!--ZL.Label id="全站头部"/}-->
+
+<div class="myBanner news_banner">
+<strong>专业的教育模式让你的孩子赢在人生的起跑线上</strong>
+<div class="mask_bg"></div>
+</div><!--内页通栏banner广告位 -->
+<div class="news_body news_wrap">
+<div class="container">
+<div class="row">
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+<div class="news_mySites">
+<nav aria-label="breadcrumb" role="navigation">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="/">首页</a></li>
+{ZL.Label id="输出多级节点导航_V4" NodeID="{SField sid="文章模型数据源标签" FD="NodeID" page="0"/}" ShowNum="30" /}
+<li class="breadcrumb-item active">正222文 </li>
+</ol>
+</nav>
+</div><!--面包屑导航结束 -->
+
+<div class="myContent_l">
+<h1>{SField sid="文章模型数据源标签" FD="Title" page="0"/}</h1>
+<div class="myAbbr">
+ <span id="CreateTime">发表于：{ZL:FormatDate({SField sid="文章模型数据源标签" FD="CreateTime" page="0"/},yyyy-MM-dd)/}</span> <span id="Hits">浏览数：<SCRIPT language=javascript src="/Common/GetHits.aspx?id={SField sid="文章模型数据源标签" FD="GeneralID" page="0"/}"></SCRIPT> 
+<span id="favs"><a href="/user/content/addtofav?infoid={SField sid="文章模型数据源标签" FD="GeneralID"/}&type=1&title={SField sid="文章模型数据源标签" FD="Title" page="0"/}&url={$SiteURL/}/item/{SField sid="文章模型数据源标签" FD="GeneralID" page="0"/}.aspx" target="_blank"><i class="zi zi_heart" aria-hidden="true"></i> 收藏</a></SCRIPT>  <a href="/Class_100/NodePage.aspx?t={SField sid="文章模型数据源标签" FD="Title" page="0"/}-来自{$SiteName/}&urls={$SiteURL/}/item/{SField sid="文章模型数据源标签" FD="GeneralID" page="0"/}.aspx" target="_blank"><i class="zi zi_sharealtsquare"></i>分享网址</a></span>
+</div>
+<div class="myContent">{SField sid="文章模型数据源标签" FD="content" page="{SField sid="文章模型数据源标签" FD="K_pages" page="0"/}"/}</div>
+<div id="T_page">{ZL.Page id="默认内容分页标签" num="{SField sid="文章模型数据源标签" FD="pages" page="0"/}"/}</div>
+
+<div class="col-lg-12 col-md-12 col-xs-12">
+ <div id="begin"><span id="asc">上一篇文章：{ZL.Label id="上一篇文章" NodeID="{SField sid="文章模型数据源标签" FD="NodeID" page="0"/}" /}</span> <span id="desc">下一篇文章：{ZL.Label id="下一篇文章" NodeID="{SField sid="文章模型数据源标签" FD="NodeID" page="0"/}" /}</span></div>
+
+{ZL:CopyRight({SField sid="文章模型数据源标签" FD="GeneralID" page="0"/})/}
+
+</div>
+<div class="clearfix"></div>
+</div>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+<div class="news_list">
+<div class="news_list_t"><h2>分享</h2><div class="clearfix"></div></div>
+<div class="news_share">
+<div class="bdsharebuttonbox">
+<a class="bds_more" href="#" data-cmd="more"></a>
+<a title="分享到QQ空间" class="bds_qzone" href="#" data-cmd="qzone"></a>
+<a title="分享到新浪微博" class="bds_tsina" href="#" data-cmd="tsina"></a>
+<a title="分享到腾讯微博" class="bds_tqq" href="#" data-cmd="tqq"></a>
+<a title="分享到人人网" class="bds_renren" href="#" data-cmd="renren"></a>
+<a title="分享到微信" class="bds_weixin" href="#" data-cmd="weixin"></a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+</div>
+</div>
+<div class="news_list minfo_hotcon">
+<div class="news_list_t"><h2>热门文章</h2><div class="clearfix"></div></div>
+<div class="news_list_c">
+<ul class="list-unstyled">
+{ZL.Label id="输出指定节点标题_带点击v4" NodeID="{SField sid="文章模型数据源标签" FD="NodeID" page="0"/}" TitleNum="34" ShowNum="10" /}
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><!--主体结束 -->
+<div class="Assis_Div"></div>
+
+<section class="minfo_footer">
+{ZL.Label id="全站底部"/}
+</section>
+
+{ZL.Label id="移动端底部"/}
+
+
+
+<script>
+//添加状态
+$(".menu3").addClass("active");
+
+//关闭公众号横条
+$('.gzh .image a').click(function(){
+	$('.gzh').fadeOut();
+});
+//头部滚动
+$(window).scroll(function(){
+	if($(window).scrollTop()>0){
+		$(".home_navbar").addClass("nav_bg")
+	}
+	else{
+		$(".home_navbar").removeClass("nav_bg");
+	}
+});
+//搜索框
+function isSearch(){
+if($(".home_navbar .navbar-nav .search_form").is(":hidden")){
+	$(".home_navbar .navbar-nav li").hide();
+	$(".home_navbar .navbar-nav .search_form").show();
+	$(".home_navbar div.navbar-nav li:last-child").show();
+	$(".home_navbar div.navbar-nav li:last-child i").removeClass("zi_search").addClass("zi_times");
+}else{
+	$(".home_navbar .navbar-nav li").show();
+	$(".home_navbar .navbar-nav .search_form").hide();
+	$(".home_navbar div.navbar-nav li:last-child").show();
+	$(".home_navbar div.navbar-nav li:last-child i").removeClass("zi_times").addClass("zi_search");
+	}
+}
+</script>
+</body>
+</html>
+<script type="text/javascript" src="/JS/Controls/ZL_Dialog.js"></script>

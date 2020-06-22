@@ -1,0 +1,85 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+<!DOCTYPE html>
+<html>
+<head>
+@Html.Partial("_layout_assets")
+<link href="/App_Themes/V4user.css?version=@(ZoomLa.BLL.BLLCommon.Version_JS)" rel="stylesheet"/>
+<link type="text/css" rel="stylesheet" href="/dist/css/weui.min.css" />
+@RenderSection("head",false)</head>
+<body>
+<style type="text/css">
+    .u_menu {display:none;}
+</style>
+@RenderPage("~/Areas/User/Views/Shared/ASCX/DefaultTop.cshtml") 
+<div class="u_fix_height"></div>
+<div class="u_main_content">@RenderSection("content", false)</div>
+<div class="u_footer">
+<!--
+@MvcHtmlString.Create(ZoomLa.Components.SiteConfig.SiteInfo.Copyright)
+<p>
+
+Powered by &copy; @MvcHtmlString.Create(Call.GetLabel("{$SiteName/}")) <span>@MvcHtmlString.Create(Call.GetLabel("{$SiteURL/}"))</span>
+</p>
+-->
+
+Powered by &copy; @MvcHtmlString.Create(Call.GetLabel("{ZL:DateNow(yyyy)/}")) @MvcHtmlString.Create(ZoomLa.Components.SiteConfig.SiteInfo.SiteName) BY @MvcHtmlString.Create(ZoomLa.Components.SiteConfig.SiteInfo.Webmaster)
+</div>
+@MvcHtmlString.Create(Call.GetLabel("{ZL.Label id=\"移动端底部\"/}"))
+<div>@RenderSection("script", false)</div>
+</body>
+</html>
+<script>
+    $(function (e) {
+        //var filter = "input[type=text][id]:not(#key):visible:first";
+        //if ($(filter).length > 0) {
+        //    $(filter).focus();
+        //}
+        var curban = $("#pageflag").attr("data-ban");
+        var curnav = $("#pageflag").attr("data-nav");
+        $("#bs-example-navbar-collapse-1 li").removeClass("active");
+        $("#u_" + curban).addClass("active");
+        $("#nav_" + curnav).addClass("active");
+        if (curnav == "edu") {
+            $(".u_left_menu").show();
+        }
+        $(".user_leftd li a.u_left_head").click(function (e) {
+            if ($(this).parent().find(".user_l_ulin").css("display") == "none")
+                $(this).parent().find(".user_l_ulin").slideDown();
+            else
+                $(this).parent().find(".user_l_ulin").slideUp();
+            window.localStorage.User_Default_left = $(this).parent().attr("id");
+        })
+    });
+    $("#mimenu_btn").click(function (e) {
+	if ($(".u_menu_left").width() > 0) {
+		$(".u_menu_left ul").fadeOut(100);
+		$(".u_menu_left").animate({ width: 0 }, 200);
+	}
+	else {
+		$(".u_menu_left").animate({ width: 150 }, 300);
+		$(".u_menu_left ul").fadeIn();
+	}
+	});
+    //会员搜索
+    $("#sub_btn").click(function (e) {
+        if ($("#key").val() == "")
+            alert("搜索关键字为空!");
+        else
+            window.location = "/User/Common/SearchResult?key=" + escape($("#key").val());
+    });
+    //搜索回车事件
+    function IsEnter(obj) {
+        if (event.keyCode == 13) {
+            $("#sub_btn").click(); return false;
+        }
+    }
+    $(".u_left_control").click(function (e) {
+        if ($(".u_left_menu").width() > 0) {
+            $(".u_left_menu").animate({ width: 0 }, 200);
+        }
+        else {
+            $(".u_left_menu").animate({ width: 200 }, 300);
+        }
+    })
+	
+</script>

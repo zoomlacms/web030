@@ -1,0 +1,37 @@
+{ZL.Source id="评论数据源标签" /}<!DOCTYPEHTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{SField sid="评论数据源标签" FD="Title" page="0"/}</title>
+{ZL:Boot4()/}
+<meta name="Keywords" content="{SField sid="评论数据源标签" FD="Tagkey" page="0" /}">
+{ZL:GetCSS(2,0)/}
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<script src="/js/scrolltopcontrol.js"></script>
+</head>
+<body>
+<header class="mcomment_header">
+<strong><i class="zi zi_commentalt"></i> {SField sid="评论数据源标签" FD="Title" page="0"/}</strong>
+<div class="mcomment_header_con">{SField sid="评论数据源标签" FD="content" page="0"/}</div>
+<div class="mcomment_header_info"><small><i class="zi zi_useralt" ></i> 发布人：{SField sid="评论数据源标签" FD="fbr" page="0"/}</small><small><i class="zi zi_commentdots"></i> 评论数：{ZL.Label id="输出评论数" Gid="{SField sid="评论数据源标签" FD="GeneralID" page="0"/}" /}</small> </div>
+</header>
+<!--header end-->
+
+
+
+<div class="mcomment_tile"><strong><i class="zi zi_commentdots" ></i> 立即评论</strong></div>
+
+<section class="mcomment_main">
+<div class="mcomment_main_if"><iframe id="comm_ifr" scrolling="no" onload="this.height = $(this).contents().height() + 100 + 'px';" src="/Comments/CommentFor?ID={SField sid="评论数据源标签" FD="GeneralID"/}" width="100%" align="middle" height="100%" frameborder="0"></iframe></div>
+</section>
+<!--main end-->
+
+{ZL.Label id="移动端底部"/}
+
+<script>
+$(function(){
+$(".menu2").addClass("active");
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>390</LabelID>
+    <LabelName>输出地铁所有站点</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>ParentID,0,1,父级ID|order,asc$desc,3,order排序|ShowNum,100,1,显示个数</LabelParam>
+    <LabelTable>ZL_Grade</LabelTable>
+    <LabelField>GradeName</LabelField>
+    <LabelWhere> ZL_Grade.ParentID=@ParentID</LabelWhere>
+    <LabelOrder>ZL_Grade.GradeID @order</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;li&gt;&lt;a href="#"&gt;{Field="GradeName"/}&lt;small&gt; 0&lt;/small&gt;&lt;/a&gt;&lt;/li&gt;
+{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_Grade","tb_s":""}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

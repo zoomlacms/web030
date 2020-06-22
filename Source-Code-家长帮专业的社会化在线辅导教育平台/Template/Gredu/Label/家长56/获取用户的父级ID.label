@@ -1,0 +1,54 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>373</LabelID>
+    <LabelName>获取用户的父级ID</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam />
+    <LabelTable>ZL_User</LabelTable>
+    <LabelField>ParentUserID,UserID,GroupID</LabelField>
+    <LabelWhere> ZL_User.UserID={ZL:GetuserID()/}</LabelWhere>
+    <LabelOrder />
+    <LabelContent>&lt;script&gt;
+if({Field="GroupID"/}==2){
+	$("#user_link").attr("href","{ZL:GetNodeLinkUrl(34)/}?d={Field="UserID"/}")
+    $("#user_mingshi").attr("href","{ZL:GetProposeinfo(34)/}?d={Field="UserID"/}")
+	}
+	if({Field="GroupID"/}==3){
+        if({Field="ParentUserID"/}==0){
+                $("#user_link").attr("href","{ZL:GetNodeLinkUrl(34)/}?d=19")
+                $("#user_mingshi").attr("href","{ZL:GetProposeinfo(34)/}?d=19")
+        }else{
+                $("#user_link").attr("href","{ZL:GetNodeLinkUrl(34)/}?d={Field="ParentUserID"/}")
+                $("#user_mingshi").attr("href","{ZL:GetProposeinfo(34)/}?d={Field="ParentUserID"/}")
+        }
+	}
+	if({Field="GroupID"/}==4){
+        if({Field="ParentUserID"/}==0){
+              $("#user_link").attr("href","{ZL:GetNodeLinkUrl(34)/}?d=19")
+              $("#user_mingshi").attr("href","{ZL:GetProposeinfo(34)/}?d=19")
+        }else{        
+              $("#user_link").attr("href","{ZL:GetNodeLinkUrl(34)/}?d={Field="ParentUserID"/}")
+              $("#user_mingshi").attr("href","{ZL:GetProposeinfo(34)/}?d={Field="ParentUserID"/}")
+        }
+	}
+&lt;/script&gt;</LabelContent>
+    <LabelCount>1</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_User","tb_s":""}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

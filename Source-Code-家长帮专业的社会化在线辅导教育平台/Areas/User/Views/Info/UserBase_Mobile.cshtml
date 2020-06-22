@@ -1,0 +1,125 @@
+﻿@using ZoomLa.Model
+@using ZoomLa.BLL
+@using ZoomLa.Controls
+@using ZoomLa.Sns
+@{
+
+    B_Ex_User userBll = new B_Ex_User();
+    M_UserInfo mu = ViewBag.mu;
+    M_Uinfo basemu = ViewBag.basemu;
+}
+<!--head-->
+    <style>
+    .text_100{width:100px;min-width:100px;}
+    label { margin-bottom:0; font-weight:500;}
+    .sfile_updiv .input-group { display:inline;}
+    .sfile_img { width:50px; height:50px;}
+    .weui-cell_select .weui-select { padding-right:0;}
+    .padding0_xs { padding-left:0; padding-right:0;}
+    #u_ban{display: none;}
+	</style>
+
+<div class="addcontent_top"><a href="/Extend/User/Default.aspx"><i class="zi zi_arrowLeft"></i></a> <small id="add_title">个人资料</small></div>
+
+<!--content-->
+<div id="pageflag" data-nav="home" data-ban="UserInfo"></div>
+
+
+<form action="@MVCHelper.GetAction(Url.Action("UserBase_Edit","Info"),Request)" method="post">
+<div class="container btn_green padding0_xs">
+<div id="Tabs0">
+<div class="weui-cells weui-cells_form">
+@*<div class="weui-cell">
+<div class="weui-cell__hd"><label class="weui-label">真实姓名</label></div>
+<div class="weui-cell__bd"><input id="tbTrueName" name="tbTrueName" class="weui-input" value="@mu.TrueName" /></div>
+</div>*@
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                @Html.Partial("C_SFileUP", new C_SFileUP { FileType = "img", MaxHeight = 200, MaxWidth = 200, ID = "UserFace", Value = mu.UserFace, SaveType = "user" })
+                <input type="hidden" id="UserFace" name="UserFace" />
+            </div>
+        </div>
+    </div>
+<style type="text/css">
+</style>
+<script>
+    $("#UserFace_t,.sfile_clsbtn,.sfile_selbtn").hide();
+    $(".sfile_view").click(function () {$(".sfile_up").click(); });
+</script>
+
+<div class="weui-cell">
+<div class="weui-cell__hd"><label class="weui-label">昵称</label></div>
+<div class="weui-cell__bd"><input id="txtHonName" name="txtHonName" class="weui-input required" value="@mu.HoneyName" /></div>
+</div>
+<div class="weui-cell">
+<div class="weui-cell__hd"><label for="" class="weui-label">出生日期</label></div>
+<div class="weui-cell__bd">
+<input class="weui-input" type="date" id="tbBirthday" name="tbBirthday" value="@basemu.BirthDay" />
+</div>
+</div>
+<div class="weui-cell" hidden>
+<div class="weui-cell__hd"><label class="weui-label">办公电话</label></div>
+<div class="weui-cell__bd"><input id="tbOfficePhone" name="tbOfficePhone" class="weui-input" value="@basemu.OfficePhone" /></div>
+</div>
+<div class="weui-cell" hidden>
+<div class="weui-cell__hd"><label class="weui-label">家庭电话</label></div>
+<div class="weui-cell__bd"><input id="tbHomePhone" name="tbHomePhone" class="weui-input" value="@basemu.HomePhone" /></div>
+</div>
+<div class="weui-cell" hidden>
+<div class="weui-cell__hd"><label class="weui-label">传真</label></div>
+<div class="weui-cell__bd"><input id="tbFax" name="tbFax" class="weui-input" value="@basemu.Fax" /></div>
+</div>
+<div class="weui-cell weui-cell_vcode">
+<div class="weui-cell__hd"><label class="weui-label">手机号码</label></div>
+<div class="weui-cell__bd"><input class="weui-input" type="text" id="Mobile_L" name="Mobile_L" value="@basemu.Mobile" oninvalid="@basemu.Mobile" disabled="disabled" /></div>
+<div class="weui-cell__ft"><a class="weui-vcode-btn" href="@Url.Action("Mobile","Change")">修改手机号</a></div>
+</div>
+<div class="weui-cell weui-cell_vcode" hidden>
+<div class="weui-cell__hd"><label class="weui-label">邮箱</label></div>
+<div class="weui-cell__bd"><input class="weui-input" type="text" id="Email_L" name="Email_L" value="@basemu.Email" oninvalid="@basemu.Mobile" disabled="disabled" /></div>
+<div class="weui-cell__ft"><a class="weui-vcode-btn" href="@Url.Action("Email","Change")">修改邮箱</a></div>
+</div>
+<div class="weui-cell weui-cell_select weui-cell_select-after" style="display:none;">
+<div class="weui-cell__hd">
+<label for="" class="weui-label">所属城市</label>
+</div>
+<div class="weui-cell__bd">
+<select id="tbProvince" class="weui-select" style="width:29%"></select>
+<select id="tbCity" class="weui-select" style="width:33%"></select>
+<select id="tbCounty" class="weui-select" style="width:33%"></select>
+</div>
+</div>
+<input id="address" name="address" type="hidden" value="@basemu.Province,@basemu.City,@basemu.County" />
+<div class="weui-cell" hidden>
+<div class="weui-cell__hd"><label class="weui-label">联系地址</label></div>
+<div class="weui-cell__bd"><input id="tbAddress" name="tbAddress" class="weui-input" value="@basemu.Address" /></div>
+</div>
+<div class="weui-cell">
+<div class="weui-cell__hd"><label class="weui-label">性别</label></div>
+<div class="weui-cell__bd">@MVCHelper.H_Radios("tbUserSex", "男,女".Split(','), "1,0".Split(','), basemu.UserSex ? "1" : "0")</div>
+</div>
+<div class="weui-cell" hidden>
+<div class="weui-cell__hd"><label class="weui-label">微信账号</label></div>
+<div class="weui-cell__bd"><input id="tbUC" name="tbUC" class="weui-input" value="@basemu.UC" /></div>
+</div>
+
+
+</div>
+</div>
+
+            
+<div>@Html.Partial("Fields/Index_User_AddContent", (ZoomLaCMS.Models.Field.VM_FieldModel)ViewBag.htmlMod)</div>
+<div class="weui-btn-area">
+<button type="submit" id="btnSave" class="weui-btn weui-btn_primary" onclick="return SaveAdress()">更新信息</button>
+</div>
+    </div>
+    <div class="u_sign" id="u_UserInfo"></div>
+    <input type="hidden" id="UserFieldCount_Hid" />
+</form>
+<script>
+$(function(){
+$(".menu4").addClass("active");
+})
+</script>
+

@@ -1,0 +1,49 @@
+﻿<script>location = "/Extend/User/Default.aspx";</script>
+{ZL.Source id="节点栏目信息数据源"/}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>家长会员中心_{$SiteTitle/}</title>
+{ZL:Boot4()/}
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<script type="text/javascript" src="{$CssDir/}js/server.js"></script>
+<script src="/JS/Controls/B_User.js"></script>
+{ZL:GetCSS(1,0)/}
+</head>
+<body>
+<section class="container Parents_top user_jz_bg">
+<div class="row">
+{ZL.Label id="获取家长用户的信息" /}
+</div>
+</section>
+<!--top end-->
+
+<div class="container user_list_ul user_list_bg">
+<ul>
+{ZL.Label id="家长对应学员资料是否完善_根据当前用户" NodeID="38" /}
+<li><a href="{ZL:GetLastinfo(38)/}"><i class="zi zi_cartarrowPlus" zico="购物车加号"></i> 订单列表 <small><i class="zi zi_pathRight"></i></small></a></li>
+<li><a href="/extend/order.aspx"><i class="zi zi_cartarrowdown" zico="购物车加号"></i> 订单管理 <small><i class="zi zi_pathRight"></i></small></a></li>
+<li><a href="/extend/User/MyTeacher.aspx"><i class="zi zi_bookopen"></i> 我的老师 <small><i class="zi zi_pathRight"></i></small></a></li>
+<li><a href="/User/Message/MessageOutbox"><i class="zi zi_bubbleSquare"></i> 消息管理 <small><i class="zi zi_pathRight"></i></small></a></li>
+<li><a href="/User/info/UserBase"><i class="zi zi_useralt"></i> 我的信息 <small><i class="zi zi_pathRight"></i></small></a></li>
+<li><a href="/PClass?id=22"><i class="zi zi_bubbleSquare"></i> 讨论专区 <small><i class="zi zi_pathRight"></i></small></a></li>
+<li><a href="tel:18999995555"><i class="zi zi_service"></i> 联系客服 <small><i class="zi zi_pathRight"></i></small></a></li>
+<li><a href="/User/Change/Pwd"><i class="zi zi_squareCorrect"></i> 修改密码 <small><i class="zi zi_pathRight"></i></small></a></li>
+{ZL.Label id="会员中心-店家申请识别" UID="{ZL:GetuserID()/}" /}
+</ul>
+</div>
+<!--list end-->
+
+{ZL.Label id="移动端底部"/}
+</body>
+<script>
+	$(function(){
+		$(".menu4").addClass("active");	
+		if ('{ZL.Label id="判断店铺是否审核通过" /}' != "99") {
+		    $(".Parents_list .shop_title").empty().html("店铺申请")
+		}
+	    
+	})	
+</script>
+</html>

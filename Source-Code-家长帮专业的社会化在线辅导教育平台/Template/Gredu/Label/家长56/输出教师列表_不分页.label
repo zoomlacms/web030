@@ -1,0 +1,53 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>352</LabelID>
+    <LabelName>输出教师列表_不分页</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>家长56</LabelCate>
+    <LabelDesc />
+    <LabelParam>ShowNum,0,1,显示个数|NodeID,0,1,节点参数|TitleNum,30,1,标题长度|ConNum,50,1,内容长度|Area,,1,地区|nj,,1,年级|kc,,1,课程</LabelParam>
+    <LabelTable>ZL_CommonModel LEFT JOIN ZL_C_lssq ON ZL_CommonModel.ItemID=ZL_C_lssq.ID</LabelTable>
+    <LabelField>GeneralID,Title,dbo.ZL_StripeTrimstr(jxtd) as con,tx,NodeID,jxfw,jxms</LabelField>
+    <LabelWhere> (NodeID=@NodeID or FirstNodeID=@NodeID) And Status=99 and xxdz like '%@Area%' and jxfw like '%@nj%' and jxfw like '%@kc%'</LabelWhere>
+    <LabelOrder>ZL_CommonModel.CreateTime DESC</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;li&gt;&lt;a href="{ZL:GetInfoUrl({Field="GeneralID"/})/}"&gt;
+&lt;div class="list_left list_left_{Field="GeneralID"/}"&gt;&lt;/div&gt;
+&lt;div class="list_right "&gt;&lt;strong&gt;{ZL:CutText({Field="Title"/},@TitleNum,...)/}&lt;/strong&gt;&lt;abbr&gt;&lt;small&gt;{ZL:CutText({Field="con"/},@ConNum,...)/}&lt;/small&gt;&lt;/abbr&gt; 
+&lt;abbr class="abbr_b"&gt;&lt;small&gt;教学范围：{Field="jxfw"/}&lt;/small&gt;| &lt;small&gt;授课模式：{Field="jxms"/}&lt;/small&gt;&lt;/abbr&gt;
+&lt;/div&gt;
+  &lt;/a&gt;
+&lt;script&gt;
+  var imgurljson={Field="tx"/};
+  if(imgurljson){
+    var imgurl=imgurljson[0].url;
+$(".list_left_{Field="GeneralID"/}").append("&lt;img src="+imgurl+" onerror='this.onerror=null;this.src='/UploadFiles/nopic.svg''/&gt; ")
+  }else{
+  $(".list_left_{Field="GeneralID"/}").append("&lt;img src='/UploadFiles/nopic.svg'/&gt;");
+  }
+  
+
+
+&lt;/script&gt;
+&lt;/li&gt;
+
+
+{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>参数判断</Modeltypeinfo>
+    <addroot />
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <EmptyContent />
+    <DataSourceType>{"ds_m":"main","ds_s":"main","tb_m":"ZL_CommonModel","tb_s":"ZL_C_lssq"}</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>
